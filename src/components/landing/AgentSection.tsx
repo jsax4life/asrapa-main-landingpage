@@ -1,33 +1,38 @@
-import { Activity, BadgeDollarSign, Rocket, UserPlus, Users } from "lucide-react";
+import { AlertTriangle, Music2, Radio, Smartphone } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
 import { LINKS } from "./links";
 
-const benefits = [
+type PartnerChannel = {
+  icon: LucideIcon;
+  title: string;
+  rate: string;
+  body: string;
+  confirmed: boolean;
+};
+
+const channels: PartnerChannel[] = [
   {
-    icon: Users,
-    title: "Manage subscribers",
-    body: "Onboard and renew listeners from a single agent workspace.",
+    icon: Music2,
+    title: "Market reseller",
+    rate: "50 FCFA per sale",
+    body: "The Bunda Package earns you the same as your current offer — 50 FCFA per sale.",
+    confirmed: true,
   },
   {
-    icon: BadgeDollarSign,
-    title: "Earn commissions",
-    body: "Transparent payouts on every subscription you bring in.",
+    icon: Radio,
+    title: "Canal+ Partner",
+    rate: "Commission to be confirmed",
+    body: "Commission not yet finalized — rate to be announced once validated by ASRAPA.",
+    confirmed: false,
   },
   {
-    icon: UserPlus,
-    title: "Grow your network",
-    body: "Invite sub-agents and scale beyond your own city.",
-  },
-  {
-    icon: Activity,
-    title: "Track performance",
-    body: "Live dashboards on conversions, churn and earnings.",
-  },
-  {
-    icon: Rocket,
-    title: "Fast onboarding",
-    body: "Verified and selling in under 24 hours.",
+    icon: Smartphone,
+    title: "Mobile banking partner",
+    rate: "Commission to be confirmed",
+    body: "Commission not yet finalized — rate to be announced once validated by ASRAPA.",
+    confirmed: false,
   },
 ];
 
@@ -38,102 +43,84 @@ export function AgentSection() {
         <Reveal className="order-2 lg:order-1">
           <div
             className="glass relative overflow-hidden rounded-[28px] p-5 shadow-[var(--shadow-soft)] sm:rounded-[32px] sm:p-6"
-            aria-label="Agent earnings dashboard preview"
+            aria-label="Reseller partner channels"
           >
             <div
               aria-hidden
               className="pointer-events-none absolute -top-20 -right-16 size-56 rounded-full bg-primary/20 blur-3xl"
             />
-            <div className="relative">
-              <p className="text-xs text-muted-foreground">Agent earnings</p>
-              <p className="mt-1 font-display text-3xl font-bold sm:text-4xl">
-                ₦482,900
-                <span className="ml-2 text-sm font-medium text-primary">+24%</span>
-              </p>
-
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {[
-                  { label: "Active subscribers", value: "1,284" },
-                  { label: "This month", value: "196 new" },
-                  { label: "Commission rate", value: "18%" },
-                  { label: "Network agents", value: "32" },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="rounded-2xl border border-border bg-secondary/40 p-4 transition-colors hover:border-primary/30"
-                  >
-                    <p className="font-display text-xl font-bold">{item.value}</p>
-                    <p className="mt-0.5 text-xs text-muted-foreground">{item.label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-4 rounded-2xl border border-border bg-secondary/30 p-4">
-                <p className="text-xs text-muted-foreground">Conversion this week</p>
-                <div className="mt-3 space-y-3.5">
-                  {[
-                    { city: "Lagos", pct: 82 },
-                    { city: "Accra", pct: 64 },
-                    { city: "Nairobi", pct: 47 },
-                  ].map((row) => (
-                    <div key={row.city}>
-                      <div className="flex justify-between text-xs">
-                        <span>{row.city}</span>
-                        <span className="text-muted-foreground">{row.pct}%</span>
+            <div className="relative grid gap-3">
+              {channels.map((channel) => (
+                <article
+                  key={channel.title}
+                  className="rounded-2xl border border-border bg-secondary/40 p-4 transition-colors hover:border-primary/30"
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="icon-box size-10 shrink-0 rounded-xl">
+                      <channel.icon className="size-5" aria-hidden />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-1">
+                        <h3 className="font-display text-sm font-bold">{channel.title}</h3>
+                        <span
+                          className={
+                            channel.confirmed
+                              ? "text-xs font-semibold text-primary"
+                              : "rounded-full bg-secondary px-2.5 py-0.5 text-[10px] tracking-wide text-muted-foreground uppercase"
+                          }
+                        >
+                          {channel.rate}
+                        </span>
                       </div>
-                      <div
-                        className="mt-1.5 h-2 overflow-hidden rounded-full bg-secondary"
-                        role="progressbar"
-                        aria-valuenow={row.pct}
-                        aria-valuemin={0}
-                        aria-valuemax={100}
-                        aria-label={`${row.city} conversion`}
-                      >
-                        <div
-                          className="h-full rounded-full bg-primary transition-[width] duration-700"
-                          style={{ width: `${row.pct}%` }}
-                        />
-                      </div>
+                      <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                        {channel.body}
+                      </p>
                     </div>
-                  ))}
-                </div>
-              </div>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </Reveal>
 
         <Reveal delay={100} className="order-1 lg:order-2">
           <span className="text-xs font-medium tracking-[0.25em] text-primary uppercase">
-            For Agents
+            Join the network
           </span>
           <h2 className="mt-3 text-3xl leading-[1.05] font-bold sm:text-4xl lg:text-[2.75rem]">
-            Become an Asrapa Agent
+            Sell Chadian music, without changing your habits.
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-            Turn your community into a business. Agents sell Asrapa subscriptions, support listeners
-            and earn recurring commission on every account they keep active.
+            Whether you are already a market reseller, Canal+ partner or mobile banking agent,
+            ASRAPA integrates with what you already do — without disrupting anything.
           </p>
 
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-            {benefits.map((benefit) => (
-              <li
-                key={benefit.title}
-                className="glass interactive-lift rounded-2xl p-4"
-              >
-                <span className="icon-box size-10 rounded-xl">
-                  <benefit.icon className="size-5" aria-hidden />
-                </span>
-                <h3 className="mt-3 font-display text-sm font-bold">{benefit.title}</h3>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{benefit.body}</p>
-              </li>
-            ))}
-          </ul>
+          <div
+            className="mt-8 flex gap-3 rounded-2xl border border-primary/25 bg-primary/8 p-4"
+            role="note"
+            aria-label="Important note about reseller commissions"
+          >
+            <AlertTriangle className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
+            <div className="min-w-0">
+              <p className="font-display text-sm font-bold">Important note</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                Only the reseller rate at the market (50 FCFA per sale) is confirmed. Canal+ and
+                mobile banking commissions are not yet finalized: do not invent any figures or
+                publish any numbers until ASRAPA has validated them.
+              </p>
+            </div>
+          </div>
 
-          <Button asChild size="lg" className="mt-9 rounded-full px-7">
-            <a href={LINKS.agents} target="_blank" rel="noopener noreferrer">
-              Apply as Agent
-            </a>
-          </Button>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Button asChild size="lg" className="rounded-full px-7">
+              <a href={LINKS.agents} target="_blank" rel="noopener noreferrer">
+                Becoming a reseller/distributor
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full px-7">
+              <a href="#faq">How does the network work?</a>
+            </Button>
+          </div>
         </Reveal>
       </div>
     </section>

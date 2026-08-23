@@ -1,102 +1,124 @@
-import {
-  BarChart3,
-  Clock,
-  Download,
-  Headphones,
-  Heart,
-  ListMusic,
-  Share2,
-  ShieldCheck,
-  Sparkles,
-  Zap,
-} from "lucide-react";
+import { Music2, Phone, Smartphone, TabletSmartphone } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
-const features = [
+type Plan = {
+  name: string;
+  price: string;
+  detail: string;
+};
+
+type Channel = {
+  icon: LucideIcon;
+  title: string;
+  price?: string;
+  body: string;
+  plans?: Plan[];
+};
+
+const channels: Channel[] = [
   {
-    icon: Headphones,
-    title: "Unlimited Music Streaming",
-    body: "Play every track in the catalogue with no daily caps or hidden limits.",
+    icon: Smartphone,
+    title: "Smartphone",
+    body: "Premium listening on modern devices — streaming, downloads and offline play.",
+    plans: [
+      {
+        name: "Premium",
+        price: "2,500 FCFA / month",
+        detail: "Unlimited streaming, downloading, offline listening, high quality.",
+      },
+      {
+        name: "Family",
+        price: "4,000 FCFA / month",
+        detail: "5 connectable people.",
+      },
+      {
+        name: "Student",
+        price: "1,200 FCFA / month",
+        detail: "1 single account, download limited to 20 titles/month.",
+      },
+    ],
   },
   {
-    icon: ListMusic,
-    title: "Create Playlists",
-    body: "Build, reorder and share playlists for every mood, commute and party.",
+    icon: TabletSmartphone,
+    title: "Small phone (KaiOS)",
+    price: "1,000 FCFA / month",
+    body: "Access to ASRAPA from a KaiOS-compatible keypad phone.",
   },
   {
-    icon: Heart,
-    title: "Follow Artists",
-    body: "Get notified the moment the artists you love drop something new.",
+    icon: Phone,
+    title: "Classic telephone (USSD)",
+    price: "500 FCFA / month",
+    body: "Listen without internet or smartphone, via a USSD code.",
   },
   {
-    icon: Sparkles,
-    title: "High Quality Audio",
-    body: "Studio-grade streaming that keeps every bassline and vocal intact.",
-  },
-  {
-    icon: Download,
-    title: "Offline Listening",
-    body: "Save your favourites for the road. Rolling out soon on mobile.",
-    soon: true,
-  },
-  {
-    icon: BarChart3,
-    title: "Artist Analytics",
-    body: "See streams, saves, cities and listener growth in real time.",
-  },
-  {
-    icon: Share2,
-    title: "Music Sharing",
-    body: "Share tracks anywhere with rich, instant-playing preview links.",
-  },
-  {
-    icon: Clock,
-    title: "Personalized Recommendations",
-    body: "A feed that learns your taste and surfaces the next favourite.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Secure Platform",
-    body: "Protected accounts, safe payouts and verified artist profiles.",
-  },
-  {
-    icon: Zap,
-    title: "Fast Streaming",
-    body: "Optimised delivery that starts playback instantly, even on 3G.",
+    icon: Music2,
+    title: "Bunda Package",
+    price: "150 FCFA / 6 titles",
+    body: "Sold individually through the reseller network.",
   },
 ];
 
 export function Features() {
   return (
-    <section id="features" className="scroll-mt-24 section-shell">
+    <section id="how-it-works" className="scroll-mt-24 section-shell">
       <div className="mx-auto max-w-[1400px] container-pad">
         <SectionHeading
-          eyebrow="Features"
-          title="Everything you need to listen, create and grow"
-          description="A complete music ecosystem designed for fans, independent artists and the agents who back them."
+          eyebrow="Accessible to all"
+          title="It works on all phones."
+          description="Whether you have a state-of-the-art smartphone or a classic phone (Aptorche, Tchoronko…) ASRAPA adapts to you — not the other way around."
         />
 
-        <ul className="mt-12 grid gap-3 sm:mt-14 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-5">
-          {features.map((feature, i) => (
-            <Reveal as="li" key={feature.title} delay={(i % 5) * 60}>
-              <article className="group glass interactive-lift h-full rounded-3xl p-5 sm:p-6">
-                <span className="icon-box group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-105">
-                  <feature.icon className="size-5" aria-hidden />
+        <ul
+          id="rates"
+          className="mt-12 grid scroll-mt-28 gap-3 sm:mt-14 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4"
+        >
+          {channels.map((channel, i) => (
+            <Reveal as="li" key={channel.title} delay={(i % 4) * 70}>
+              <article className="group glass interactive-lift flex h-full flex-col rounded-3xl p-5 sm:p-6">
+                <span className="icon-box group-hover:scale-105 group-hover:bg-primary group-hover:text-primary-foreground">
+                  <channel.icon className="size-5" aria-hidden />
                 </span>
-                <h3 className="mt-5 flex flex-wrap items-center gap-2 font-display text-base font-bold">
-                  {feature.title}
-                  {feature.soon ? (
-                    <span className="rounded-full bg-secondary px-2.5 py-0.5 text-[10px] tracking-wide text-muted-foreground uppercase">
-                      Coming soon
-                    </span>
-                  ) : null}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{feature.body}</p>
+                <h3 className="mt-5 font-display text-base font-bold">{channel.title}</h3>
+                {channel.price ? (
+                  <p className="mt-2 font-display text-sm font-semibold text-primary">
+                    {channel.price}
+                  </p>
+                ) : null}
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{channel.body}</p>
+
+                {channel.plans ? (
+                  <ul className="mt-5 grid flex-1 gap-2.5 border-t border-border/60 pt-4">
+                    {channel.plans.map((plan) => (
+                      <li
+                        key={plan.name}
+                        className="rounded-2xl border border-border/70 bg-secondary/30 p-3 transition-colors group-hover:border-primary/25"
+                      >
+                        <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
+                          <span className="font-display text-sm font-bold">{plan.name}</span>
+                          <span className="text-xs font-medium text-primary">{plan.price}</span>
+                        </div>
+                        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                          {plan.detail}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="flex-1" />
+                )}
               </article>
             </Reveal>
           ))}
         </ul>
+
+        <Reveal className="mt-10 flex justify-center sm:mt-12">
+          <Button asChild size="lg" variant="outline" className="rounded-full px-8">
+            <a href="#rates">View all rates</a>
+          </Button>
+        </Reveal>
       </div>
     </section>
   );

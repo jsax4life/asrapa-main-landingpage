@@ -7,10 +7,13 @@ import { cn } from "@/lib/utils";
 
 const links = [
   { label: "Home", href: "#home" },
-  { label: "Discover", href: "#discover" },
+  { label: "The Manifesto", href: "#manifesto" },
+  { label: "How it works", href: "#how-it-works" },
+  // { label: "Discover", href: "#discover" },
   { label: "For Artists", href: "#artists" },
-  { label: "For Agents", href: "#agents" },
-  { label: "Features", href: "#features" },
+  { label: "Join the network", href: "#agents" },
+  // { label: "Features", href: "#features" },
+  { label: "Catalog", href: "#catalog" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
@@ -82,11 +85,11 @@ export function Navbar() {
             </a>
           ))}
           <div className="ml-3 flex items-center gap-2">
-            <Button asChild variant="ghost" className="rounded-full">
+            {/* <Button asChild variant="ghost" className="rounded-full">
               <a href={listenUrl} target="_blank" rel="noopener noreferrer">
                 Login
               </a>
-            </Button>
+            </Button> */}
             <Button asChild className="rounded-full">
               <a href={listenUrl} target="_blank" rel="noopener noreferrer">
                 Get Started

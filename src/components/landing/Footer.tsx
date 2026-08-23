@@ -8,8 +8,8 @@ const columns = [
     title: "Quick Links",
     links: [
       { label: "Home", href: "#home" },
-      { label: "Discover", href: "#discover" },
-      { label: "Features", href: "#features" },
+      { label: "The Manifesto", href: "#manifesto" },
+      { label: "Catalog", href: "#catalog" },
       { label: "FAQ", href: "#faq" },
     ],
   },
@@ -18,7 +18,7 @@ const columns = [
     links: [
       { label: "About Asrapa", href: "#home" },
       { label: "For Artists", href: LINKS.artists, external: true },
-      { label: "For Agents", href: LINKS.agents, external: true },
+      { label: "Join the network", href: LINKS.agents, external: true },
       { label: "Careers", href: "#contact" },
       { label: "Download App", href: LINKS.playStore, external: true },
     ],
@@ -29,7 +29,7 @@ const columns = [
       { label: "Help Centre", href: "#faq" },
       { label: "Contact Us", href: "#contact" },
       { label: "Report an Issue", href: "#contact" },
-      { label: "Community", href: "#discover" },
+      { label: "Community", href: "#catalog" },
     ],
   },
   {
@@ -80,8 +80,8 @@ export function Footer() {
               <Logo />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Discover music. Support artists. Grow your career. Asrapa Music is the streaming home
-              for the new sound of Africa.
+              Urban music, traditional music, great classics, sketches, shows — all audio content
+              from Chad, accessible on your smartphone or small phone.
             </p>
             <StoreBadges className="mt-5" />
             <ul className="mt-6 flex flex-wrap gap-2">

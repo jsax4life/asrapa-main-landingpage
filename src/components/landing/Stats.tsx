@@ -1,29 +1,36 @@
+import { useEffect, useState } from "react";
 import { useCountUp, useInView } from "@/hooks/use-reveal";
+import {
+  fetchPlatformStats,
+  formatStat,
+  type PlatformStats,
+} from "@/lib/platform-stats";
 
-const stats = [
-  { value: 10, suffix: "K+", label: "Songs" },
-  { value: 2, suffix: "K+", label: "Artists" },
-  { value: 50, suffix: "K+", label: "Listeners" },
-  { value: 100, suffix: "+", label: "Cities" },
+const labels: { key: keyof PlatformStats; label: string }[] = [
+  { key: "songs", label: "Songs" },
+  { key: "artists", label: "Artists" },
+  { key: "listeners", label: "Listeners" },
+  { key: "cities", label: "Cities" },
 ];
 
 function Stat({
   value,
-  suffix,
   label,
   active,
 }: {
   value: number;
-  suffix: string;
   label: string;
   active: boolean;
 }) {
-  const count = useCountUp(value, active);
+  const { display, suffix } = formatStat(value);
+  const target = Number(display) || 0;
+  const count = useCountUp(target, active);
+
   return (
     <div className="glass interactive-lift rounded-3xl p-6 text-center sm:p-7">
       <p className="font-display text-4xl font-bold tabular-nums sm:text-5xl">
         <span className="sr-only">
-          {value}
+          {display}
           {suffix}
         </span>
         <span aria-hidden>
@@ -38,8 +45,40 @@ function Stat({
   );
 }
 
+function StatSkeleton() {
+  return (
+    <div className="glass rounded-3xl p-6 text-center sm:p-7" aria-hidden>
+      <div className="mx-auto h-10 w-20 animate-pulse rounded-lg bg-secondary sm:h-12" />
+      <div className="mx-auto mt-3 h-3 w-16 animate-pulse rounded-full bg-secondary/70" />
+    </div>
+  );
+}
+
 export function Stats() {
   const { ref, inView } = useInView<HTMLDivElement>(0.3);
+  const [stats, setStats] = useState<PlatformStats | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    fetchPlatformStats()
+      .then((data) => {
+        if (!cancelled) setStats(data);
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setStats({ songs: 0, artists: 0, listeners: 0, cities: 0 });
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <section aria-label="Asrapa Music by the numbers" className="section-shell">
@@ -47,9 +86,16 @@ export function Stats() {
         ref={ref}
         className="mx-auto grid max-w-[1400px] grid-cols-2 gap-3 container-pad sm:gap-4 lg:grid-cols-4 lg:gap-6"
       >
-        {stats.map((stat) => (
-          <Stat key={stat.label} {...stat} active={inView} />
-        ))}
+        {loading || !stats
+          ? labels.map((item) => <StatSkeleton key={item.key} />)
+          : labels.map((item) => (
+              <Stat
+                key={item.key}
+                value={stats[item.key]}
+                label={item.label}
+                active={inView}
+              />
+            ))}
       </div>
     </section>
   );

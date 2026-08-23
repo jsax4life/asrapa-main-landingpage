@@ -7,30 +7,45 @@ import {
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
+/**
+ * Question titles are final.
+ * Answers marked provisional should be replaced with the bilingual Section Plan text before launch.
+ */
 const faqs = [
   {
-    q: "What is Asrapa Music?",
-    a: "Asrapa Music is a digital streaming platform connecting artists, fans and agents. Fans stream unlimited music, artists publish and monetise their catalogue, and agents earn commission growing the subscriber base.",
+    q: "What is ASRAPA?",
+    a: "ASRAPA is the 100% Chadian streaming platform: urban music, traditional music, great classics, sketches and shows, accessible on both smartphones and small phones.",
   },
   {
-    q: "How do artists upload music?",
-    a: "Create a free artist account, verify your identity, then upload tracks or full albums from the artist dashboard. Add artwork and credits, and your release goes live after a short quality review — usually within 24 hours.",
+    q: "When will the application be available?",
+    a: "The app is not yet released. Pre-order for free to be notified as soon as it launches.",
   },
   {
-    q: "How can I become an agent?",
-    a: "Apply through the agent form, complete verification and finish a short onboarding. You get an agent dashboard, a referral code and access to commission payouts from your first subscriber.",
+    q: "I am abroad, how do I subscribe?",
+    // Provisional — replace with Section Plan (FR/EN) answer before publishing.
+    a: "You can subscribe from abroad through the ASRAPA app once it launches. Access and payment options for the diaspora will be detailed at launch; get notified via the newsletter to receive the official instructions.",
   },
   {
-    q: "Is Asrapa free?",
-    a: "Yes. The free tier gives you full catalogue access with occasional ads. Premium removes ads, unlocks the highest audio quality and adds offline listening when it launches.",
+    q: "How do I submit a catalogue?",
+    // Provisional — replace with Section Plan (FR/EN) answer before publishing.
+    a: "Create an artist account on the ASRAPA artists portal, verify your identity, then upload your tracks or full catalogue from the dashboard. Releases go live after a short quality review.",
   },
   {
-    q: "Can I create playlists?",
-    a: "Absolutely. Build unlimited playlists, reorder tracks, add custom covers and share them publicly with a single link.",
+    q: "How to become a reseller?",
+    a: "Whether you're a market vendor, Canal+ partner, or mobile banking agent, you can join the ASRAPA network. The Bunda package earns 50 FCFA per sale for market vendors.",
   },
   {
-    q: "How do subscriptions work?",
-    a: "Subscriptions are billed monthly or yearly and can be paid by card, bank transfer or through an Asrapa agent. Cancel anytime — you keep premium access until the end of the paid period.",
+    q: "Does it work without a smartphone?",
+    a: "Yes. ASRAPA is accessible on small KaiOS phones (1,000 FCFA/month) and on classic phones via USSD (500 FCFA/month).",
+  },
+  {
+    q: "How are artists paid?",
+    a: "65% of revenue goes to the artists, distributed according to actual streams; 35% funds the platform. Transparent reporting every quarter, payment within 30 days, to bank account or mobile money.",
+  },
+  {
+    q: "Can I pay with mobile money?",
+    // Provisional — replace with Section Plan (FR/EN) answer before publishing.
+    a: "Yes. ASRAPA is built for local payment habits: subscribe and renew through mobile money via our reseller and partner network, and artists can also receive their payouts by mobile money.",
   },
 ];
 

@@ -4,8 +4,8 @@ import whyChoose from "@/assets/why-choose.jpg";
 
 const reasons = [
   {
-    title: "Premium Experience",
-    body: "A polished player, zero clutter and audio that sounds like the studio.",
+    title: "Cultural Experience",
+    body: "In our African traditions, cultural memory has always been oral. It is passed down from generation to generation.",
   },
   {
     title: "Support Independent Artists",
@@ -44,10 +44,6 @@ export function WhyChoose() {
               height={1024}
               className="aspect-[4/5] w-full rounded-[28px] object-cover shadow-[var(--shadow-soft)] sm:aspect-[5/6] sm:rounded-[32px] lg:aspect-square"
             />
-            <div className="glass absolute right-4 bottom-4 left-4 rounded-2xl p-4 sm:right-auto sm:bottom-6 sm:left-6 sm:w-64">
-              <p className="text-xs text-muted-foreground">Paid to artists last quarter</p>
-              <p className="mt-0.5 font-display text-2xl font-bold text-primary">₦31.4M</p>
-            </div>
           </div>
         </Reveal>
 

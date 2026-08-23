@@ -65,28 +65,27 @@ export function Hero() {
               <span className="absolute inset-0 animate-ping rounded-full bg-primary/60" />
               <span className="relative size-2 rounded-full bg-primary" />
             </span>
-            Streaming built for African sound
+            ASRAPA — 100% CHADIAN STREAMING
           </span>
 
           <h1 className="mt-7 max-w-[14ch] text-[2.75rem] leading-[0.95] font-bold sm:text-6xl xl:text-7xl">
             Music <span className="text-gradient">Without</span> Limits.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Discover amazing artists, stream incredible music, and grow your career with Asrapa
-            Music. One platform where fans find their next favourite song, artists own their
-            audience, and agents build real income.
+            Urban music, traditional music, great classics, sketches, shows — all audio content from
+            accessible on your smartphone or small phone.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-3">
             <Button asChild size="lg" className="rounded-full px-7">
               <a href={listenUrl} target="_blank" rel="noopener noreferrer">
                 <Play className="size-4 fill-current" aria-hidden />
-                Start Listening
+                Pre-order the app for free
               </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="rounded-full px-7">
               <a href={LINKS.artists} target="_blank" rel="noopener noreferrer">
-                Join as Artist
+                I am an artist
               </a>
             </Button>
           </div>
@@ -98,15 +97,15 @@ export function Hero() {
                 <dt className="font-display text-sm font-bold sm:text-base lg:text-lg">
                   {item.value}
                 </dt>
-                <dd className="mt-0.5 text-[11px] text-muted-foreground sm:text-sm">{item.label}</dd>
+                <dd className="mt-0.5 text-[11px] text-muted-foreground sm:text-sm">
+                  {item.label}
+                </dd>
               </div>
             ))}
           </dl>
         </div>
 
-        <div
-          className="relative mx-auto w-full max-w-md animate-fade-up lg:mx-0 lg:max-w-none [animation-delay:140ms]"
-        >
+        <div className="relative mx-auto w-full max-w-md animate-fade-up lg:mx-0 lg:max-w-none [animation-delay:140ms]">
           <div
             aria-hidden
             className="pointer-events-none absolute -inset-6 rounded-[40px] bg-[radial-gradient(circle_at_50%_30%,color-mix(in_oklab,var(--primary)_28%,transparent),transparent_70%)] blur-2xl"
