@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Asrapa Music — Music Without Limits" },
+      { title: "Asrapa Music — Reconnec with your culture " },
       {
         name: "description",
         content:
@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "Asrapa Music" },
       { name: "theme-color", content: "#FF0000" },
       { name: "color-scheme", content: "dark" },
-      { property: "og:title", content: "Asrapa Music — Music Without Limits" },
+      { property: "og:title", content: "Asrapa Music — Reconnect  with your culture " },
       {
         property: "og:description",
         content:
@@ -95,7 +95,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Asrapa Music" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Asrapa Music — Music Without Limits" },
+      { name: "twitter:title", content: "Asrapa Music — Reconnect with your culture " },
     ],
     links: [
       {
@@ -121,7 +121,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
       </head>

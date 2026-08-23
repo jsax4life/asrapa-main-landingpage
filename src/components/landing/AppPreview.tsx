@@ -3,6 +3,7 @@ import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { tracks } from "./data";
 import { Waveform } from "./Waveform";
+import { useLocale } from "@/i18n/locale";
 
 function Phone({
   label,
@@ -32,18 +33,20 @@ function Phone({
 }
 
 export function AppPreview() {
+  const { t } = useLocale();
+
   return (
     <section className="section-shell" aria-labelledby="app-preview-heading">
       <div className="mx-auto max-w-[1400px] container-pad">
         <SectionHeading
-          eyebrow="App Preview"
-          title={<span id="app-preview-heading">Your whole library, in your pocket</span>}
-          description="Now playing, search, playlists and artist profiles — designed for one-handed listening."
+          eyebrow={t.preview.eyebrow}
+          title={<span id="app-preview-heading">{t.preview.title}</span>}
+          description={t.preview.description}
         />
 
         <div className="mt-12 grid gap-10 sm:mt-14 sm:grid-cols-2 xl:grid-cols-4 xl:gap-8">
           <Reveal>
-            <Phone label="Now Playing">
+            <Phone label={t.preview.nowPlaying}>
               <img
                 src={tracks[0]!.cover}
                 alt=""
@@ -68,9 +71,9 @@ export function AppPreview() {
           </Reveal>
 
           <Reveal delay={80}>
-            <Phone label="Playlist">
+            <Phone label={t.preview.playlist}>
               <p className="font-display text-sm font-bold">Late Night Drive</p>
-              <p className="text-[11px] text-muted-foreground">24 songs · 1h 42m</p>
+              <p className="text-[11px] text-muted-foreground">24 {t.preview.songs} · 1h 42m</p>
               <ul className="mt-4 space-y-2.5">
                 {tracks.slice(0, 5).map((track) => (
                   <li key={track.title} className="flex items-center gap-2.5">
@@ -96,7 +99,7 @@ export function AppPreview() {
           </Reveal>
 
           <Reveal delay={160}>
-            <Phone label="Artist Profile">
+            <Phone label={t.preview.artistProfile}>
               <img
                 src={tracks[2]!.cover}
                 alt=""
@@ -108,9 +111,9 @@ export function AppPreview() {
                 className="h-28 w-full rounded-2xl object-cover"
               />
               <p className="mt-3 font-display text-sm font-bold">Amara Sey</p>
-              <p className="text-[11px] text-muted-foreground">9,412 followers · Accra</p>
+              <p className="text-[11px] text-muted-foreground">9,412 {t.preview.followers} · Accra</p>
               <span className="mt-3 inline-block rounded-full bg-primary px-4 py-1.5 text-[11px] font-medium text-primary-foreground">
-                Follow
+                {t.preview.follow}
               </span>
               <div className="mt-4 grid grid-cols-2 gap-2">
                 {tracks.slice(3, 5).map((track) => (
@@ -131,13 +134,13 @@ export function AppPreview() {
           </Reveal>
 
           <Reveal delay={240}>
-            <Phone label="Search">
+            <Phone label={t.preview.search}>
               <div className="flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-3 py-2">
                 <Search className="size-3.5 text-muted-foreground" aria-hidden />
-                <span className="text-[11px] text-muted-foreground">Search songs, artists…</span>
+                <span className="text-[11px] text-muted-foreground">{t.preview.searchPlaceholder}</span>
               </div>
               <p className="mt-4 text-[10px] tracking-widest text-muted-foreground uppercase">
-                Top genres
+                {t.preview.topGenres}
               </p>
               <div className="mt-3 grid grid-cols-2 gap-2">
                 {tracks.slice(0, 4).map((track) => (

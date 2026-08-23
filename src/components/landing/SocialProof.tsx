@@ -1,17 +1,18 @@
 import { Reveal } from "./Reveal";
-
-const partners = ["Artists", "Fans", "Music Creators", "Streaming Community", "Labels", "Studios"];
+import { useLocale } from "@/i18n/locale";
 
 export function SocialProof() {
+  const { t } = useLocale();
+
   return (
-    <section aria-label="Trusted by" className="border-y border-border/70 bg-surface/70 py-10 sm:py-12">
+    <section aria-label={t.social.label} className="border-y border-border/70 bg-surface/70 py-10 sm:py-12">
       <Reveal className="mx-auto max-w-[1400px] container-pad">
         <p className="text-center text-xs tracking-[0.25em] text-muted-foreground uppercase">
-          Trusted by artists, fans, music creators and the streaming community
+          {t.social.heading}
         </p>
         <div className="mt-8 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
           <ul className="flex w-max animate-marquee items-center gap-3 sm:gap-4">
-            {[...partners, ...partners].map((name, i) => (
+            {[...t.social.partners, ...t.social.partners].map((name, i) => (
               <li
                 key={`${name}-${i}`}
                 className="glass flex h-12 items-center gap-3 rounded-2xl px-5 text-sm font-medium text-muted-foreground sm:h-14 sm:px-6"

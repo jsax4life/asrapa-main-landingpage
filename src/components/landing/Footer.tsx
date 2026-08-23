@@ -2,46 +2,20 @@ import { Facebook, Instagram, Youtube } from "lucide-react";
 import { Logo } from "./Logo";
 import { LINKS } from "./links";
 import { StoreBadges } from "./StoreBadges";
+import { useLocale } from "@/i18n/locale";
 
-const columns = [
-  {
-    title: "Quick Links",
-    links: [
-      { label: "Home", href: "#home" },
-      { label: "The Manifesto", href: "#manifesto" },
-      { label: "Catalog", href: "#catalog" },
-      { label: "FAQ", href: "#faq" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About Asrapa", href: "#home" },
-      { label: "For Artists", href: LINKS.artists, external: true },
-      { label: "Join the network", href: LINKS.agents, external: true },
-      { label: "Careers", href: "#contact" },
-      { label: "Download App", href: LINKS.playStore, external: true },
-    ],
-  },
-  {
-    title: "Support",
-    links: [
-      { label: "Help Centre", href: "#faq" },
-      { label: "Contact Us", href: "#contact" },
-      { label: "Report an Issue", href: "#contact" },
-      { label: "Community", href: "#catalog" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy Policy", href: "#contact" },
-      { label: "Terms of Service", href: "#contact" },
-      { label: "Cookie Policy", href: "#contact" },
-      { label: "Licensing", href: "#contact" },
-    ],
-  },
-];
+const externalHrefs = {
+  artists: LINKS.artists,
+  agents: LINKS.agents,
+  playStore: LINKS.playStore,
+} as const;
+
+function resolveHref(href: string) {
+  if (href in externalHrefs) {
+    return externalHrefs[href as keyof typeof externalHrefs];
+  }
+  return href;
+}
 
 function TikTok(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -68,6 +42,8 @@ const socials = [
 ];
 
 export function Footer() {
+  const { t } = useLocale();
+
   return (
     <footer className="border-t border-border/70 bg-surface/70">
       <div className="mx-auto max-w-[1400px] container-pad py-14">
@@ -80,8 +56,7 @@ export function Footer() {
               <Logo />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Urban music, traditional music, great classics, sketches, shows — all audio content
-              from Chad, accessible on your smartphone or small phone.
+              {t.footer.blurb}
             </p>
             <StoreBadges className="mt-5" />
             <ul className="mt-6 flex flex-wrap gap-2">
@@ -99,15 +74,15 @@ export function Footer() {
             </ul>
           </div>
 
-          <nav aria-label="Footer" className="grid grid-cols-2 gap-8 sm:grid-cols-4">
-            {columns.map((column) => (
+          <nav aria-label={t.footer.nav} className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+            {t.footer.columns.map((column) => (
               <div key={column.title}>
                 <h3 className="font-display text-sm font-bold">{column.title}</h3>
                 <ul className="mt-4 space-y-2.5">
                   {column.links.map((link) => (
                     <li key={link.label}>
                       <a
-                        href={link.href}
+                        href={resolveHref(link.href)}
                         {...("external" in link && link.external
                           ? { target: "_blank", rel: "noopener noreferrer" }
                           : {})}
@@ -124,8 +99,10 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-border/70 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Asrapa Music. All rights reserved.</p>
-          <p>Made for artists, fans and agents across Africa.</p>
+          <p>
+            © {new Date().getFullYear()} Asrapa Music. {t.footer.rights}
+          </p>
+          <p>{t.footer.made}</p>
         </div>
       </div>
     </footer>

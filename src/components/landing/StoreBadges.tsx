@@ -1,5 +1,6 @@
 import { LINKS } from "./links";
 import { cn } from "@/lib/utils";
+import { useLocale } from "@/i18n/locale";
 
 function AppleIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -18,18 +19,20 @@ function PlayStoreIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export function StoreBadges({ className }: { className?: string }) {
+  const { t } = useLocale();
+
   return (
     <div className={cn("flex flex-wrap items-center gap-3", className)}>
       <a
         href={LINKS.appStore}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Download Asrapa Music on the App Store"
+        aria-label={t.stores.appAria}
         className="inline-flex items-center gap-2.5 rounded-xl border border-border bg-black px-3.5 py-2.5 text-left transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         <AppleIcon className="size-6 shrink-0 text-foreground" />
         <span className="leading-tight">
-          <span className="block text-[10px] text-muted-foreground">Download on the</span>
+          <span className="block text-[10px] text-muted-foreground">{t.stores.appOn}</span>
           <span className="block text-sm font-semibold text-foreground">App Store</span>
         </span>
       </a>
@@ -37,12 +40,12 @@ export function StoreBadges({ className }: { className?: string }) {
         href={LINKS.playStore}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Get Asrapa Music on Google Play"
+        aria-label={t.stores.playAria}
         className="inline-flex items-center gap-2.5 rounded-xl border border-border bg-black px-3.5 py-2.5 text-left transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         <PlayStoreIcon className="size-6 shrink-0 text-foreground" />
         <span className="leading-tight">
-          <span className="block text-[10px] text-muted-foreground">Get it on</span>
+          <span className="block text-[10px] text-muted-foreground">{t.stores.playOn}</span>
           <span className="block text-sm font-semibold text-foreground">Google Play</span>
         </span>
       </a>

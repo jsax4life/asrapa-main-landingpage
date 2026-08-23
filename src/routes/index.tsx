@@ -16,8 +16,9 @@ import { CTASection } from "@/components/landing/CTASection";
 import { FAQ } from "@/components/landing/FAQ";
 import { Newsletter } from "@/components/landing/Newsletter";
 import { Footer } from "@/components/landing/Footer";
+import { LocaleProvider } from "@/i18n/locale";
 
-const title = "Asrapa Music — Music Without Limits | Stream African Music";
+const title = "Asrapa Music — Reconnect with your culture | Stream African Music";
 const description =
   "Asrapa Music connects artists, fans and agents. Stream unlimited African music, release your songs, track analytics and earn as an agent.";
 
@@ -33,13 +34,13 @@ export const Route = createFileRoute("/")({
       },
       { name: "theme-color", content: "#FF0000" },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "Asrapa Music — Music Without Limits" },
+      { property: "og:title", content: "Asrapa Music — Reconnect with your culture" },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Asrapa Music" },
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Asrapa Music — Music Without Limits" },
+      { name: "twitter:title", content: "Asrapa Music — Reconnect with your culture" },
       { name: "twitter:description", content: description },
       {
         "script:ld+json": {
@@ -67,26 +68,28 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
-      <main id="main">
-        <Hero />
-        <Manifesto />
-        <SocialProof />
-        <Stats />
-        <Features />
-        <ArtistSection />
-        <AgentSection />
-        <Discover />
-        <WhyChoose />
-        <Testimonials />
-        <AppPreview />
-        <CTASection />
-        <FAQ />
-        <Newsletter />
-      </main>
-      <Footer />
-      <Toaster />
-    </div>
+    <LocaleProvider>
+      <div className="min-h-screen bg-background text-foreground">
+        <Navbar />
+        <main id="main">
+          <Hero />
+          <Manifesto />
+          <SocialProof />
+          <Stats />
+          <Features />
+          <ArtistSection />
+          <AgentSection />
+          <Discover />
+          <WhyChoose />
+          <Testimonials />
+          <AppPreview />
+          <CTASection />
+          <FAQ />
+          <Newsletter />
+        </main>
+        <Footer />
+        <Toaster />
+      </div>
+    </LocaleProvider>
   );
 }

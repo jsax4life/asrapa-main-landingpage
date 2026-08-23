@@ -4,8 +4,10 @@ import { Reveal } from "./Reveal";
 import { StoreBadges } from "./StoreBadges";
 import { BrandIcon } from "./Logo";
 import { getAppDownloadUrl, LINKS, type AppDownloadUrl } from "./links";
+import { useLocale } from "@/i18n/locale";
 
 export function CTASection() {
+  const { t } = useLocale();
   const [listenUrl, setListenUrl] = useState<AppDownloadUrl>(LINKS.playStore);
 
   useEffect(() => {
@@ -27,11 +29,10 @@ export function CTASection() {
           <div className="relative mx-auto max-w-2xl">
             <BrandIcon className="mx-auto size-12" />
             <h2 className="mt-5 text-3xl leading-[1.05] font-bold text-primary-foreground sm:text-4xl lg:text-[2.75rem]">
-              Ready to Experience Music Differently?
+              {t.cta.title}
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-primary-foreground/90">
-              Join the listeners, artists and agents building the next chapter of African music on
-              Asrapa.
+              {t.cta.body}
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <Button
@@ -41,7 +42,7 @@ export function CTASection() {
                 className="rounded-full bg-black px-8 text-brand-gray hover:bg-black/90"
               >
                 <a href={listenUrl} target="_blank" rel="noopener noreferrer">
-                  Get Started
+                  {t.cta.getStarted}
                 </a>
               </Button>
               <Button
@@ -51,7 +52,7 @@ export function CTASection() {
                 className="rounded-full border-primary-foreground/45 bg-transparent px-8 text-primary-foreground hover:bg-primary-foreground/12 hover:text-primary-foreground"
               >
                 <a href={LINKS.artists} target="_blank" rel="noopener noreferrer">
-                  Join as Artist
+                  {t.cta.joinArtist}
                 </a>
               </Button>
             </div>

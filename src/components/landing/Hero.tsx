@@ -9,14 +9,10 @@ import album2 from "@/assets/album-2.jpg";
 import album3 from "@/assets/album-3.jpg";
 import album5 from "@/assets/album-5.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
-
-const trust = [
-  { value: "Thousands", label: "of Songs" },
-  { value: "Growing", label: "Community" },
-  { value: "Independent", label: "Artists" },
-];
+import { useLocale } from "@/i18n/locale";
 
 export function Hero() {
+  const { t } = useLocale();
   const [listenUrl, setListenUrl] = useState<AppDownloadUrl>(LINKS.playStore);
 
   useEffect(() => {
@@ -65,34 +61,34 @@ export function Hero() {
               <span className="absolute inset-0 animate-ping rounded-full bg-primary/60" />
               <span className="relative size-2 rounded-full bg-primary" />
             </span>
-            ASRAPA — 100% CHADIAN STREAMING
+            {t.hero.badge}
           </span>
 
           <h1 className="mt-7 max-w-[14ch] text-[2.75rem] leading-[0.95] font-bold sm:text-6xl xl:text-7xl">
-            Music <span className="text-gradient">Without</span> Limits.
+            {t.hero.titleBefore} <span className="text-gradient">{t.hero.titleAccent}</span>
+            {t.hero.titleAfter ? ` ${t.hero.titleAfter}` : null}
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Urban music, traditional music, great classics, sketches, shows — all audio content from
-            accessible on your smartphone or small phone.
+            {t.hero.body}
           </p>
 
           <div className="mt-9 flex flex-wrap gap-3">
             <Button asChild size="lg" className="rounded-full px-7">
               <a href={listenUrl} target="_blank" rel="noopener noreferrer">
                 <Play className="size-4 fill-current" aria-hidden />
-                Pre-order the app for free
+                {t.hero.preorder}
               </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="rounded-full px-7">
               <a href={LINKS.artists} target="_blank" rel="noopener noreferrer">
-                I am an artist
+                {t.hero.artistCta}
               </a>
             </Button>
           </div>
           <StoreBadges className="mt-5" />
 
           <dl className="mt-12 grid max-w-lg grid-cols-3 gap-3 sm:gap-5">
-            {trust.map((item) => (
+            {t.hero.trust.map((item) => (
               <div key={item.label} className="border-l border-border/80 pl-3 sm:pl-4">
                 <dt className="font-display text-sm font-bold sm:text-base lg:text-lg">
                   {item.value}
@@ -116,7 +112,7 @@ export function Hero() {
               <div className="relative shrink-0">
                 <img
                   src={album1}
-                  alt="Album artwork for Midnight Lagos by Tayo Cole"
+                  alt={t.hero.player.albumAlt}
                   width={224}
                   height={224}
                   fetchPriority="high"
@@ -131,11 +127,15 @@ export function Hero() {
                 </span>
               </div>
               <div className="min-w-0">
-                <p className="text-[11px] tracking-[0.22em] text-primary uppercase">Now Playing</p>
+                <p className="text-[11px] tracking-[0.22em] text-primary uppercase">
+                  {t.hero.nowPlaying}
+                </p>
                 <h2 className="mt-1 truncate font-display text-xl font-bold sm:text-2xl">
-                  Midnight Lagos
+                  {t.hero.player.trackTitle}
                 </h2>
-                <p className="truncate text-sm text-muted-foreground">Tayo Cole · Afrobeats</p>
+                <p className="truncate text-sm text-muted-foreground">
+                  {t.hero.player.trackArtist}
+                </p>
               </div>
             </div>
 
@@ -151,7 +151,7 @@ export function Hero() {
               aria-valuenow={40}
               aria-valuemin={0}
               aria-valuemax={100}
-              aria-label="Playback progress"
+              aria-label={t.hero.progress}
             >
               <div className="h-full w-2/5 rounded-full bg-primary transition-[width] duration-500" />
             </div>
@@ -159,7 +159,7 @@ export function Hero() {
             <div className="mt-6 flex items-center justify-between">
               <button
                 type="button"
-                aria-label="Like this track"
+                aria-label={t.hero.like}
                 className="grid size-11 place-items-center rounded-full border border-border bg-secondary/60 text-primary transition-all duration-200 hover:scale-105 hover:border-primary/40 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <Heart className="size-5 fill-current" aria-hidden />
@@ -167,21 +167,21 @@ export function Hero() {
               <div className="flex items-center gap-2.5 sm:gap-3">
                 <button
                   type="button"
-                  aria-label="Previous track"
+                  aria-label={t.hero.previous}
                   className="grid size-11 place-items-center rounded-full border border-border bg-secondary/60 transition-all duration-200 hover:scale-105 hover:border-primary/40 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <SkipBack className="size-5" aria-hidden />
                 </button>
                 <button
                   type="button"
-                  aria-label="Play"
+                  aria-label={t.hero.play}
                   className="grid size-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-[var(--shadow-glow)] transition-all duration-200 hover:scale-105 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <Play className="size-6 fill-current" aria-hidden />
                 </button>
                 <button
                   type="button"
-                  aria-label="Next track"
+                  aria-label={t.hero.next}
                   className="grid size-11 place-items-center rounded-full border border-border bg-secondary/60 transition-all duration-200 hover:scale-105 hover:border-primary/40 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <SkipForward className="size-5" aria-hidden />
@@ -189,7 +189,7 @@ export function Hero() {
               </div>
               <button
                 type="button"
-                aria-label="Shuffle"
+                aria-label={t.hero.shuffle}
                 className="grid size-11 place-items-center rounded-full border border-border bg-secondary/60 transition-all duration-200 hover:scale-105 hover:border-primary/40 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <Shuffle className="size-5" aria-hidden />
@@ -198,8 +198,8 @@ export function Hero() {
 
             <div className="mt-6 grid grid-cols-2 gap-3">
               {[
-                { cover: album2, title: "Late Night Drive", meta: "24 songs" },
-                { cover: album5, title: "Amapiano Heat", meta: "38 songs" },
+                { cover: album2, ...t.hero.player.playlists[0]! },
+                { cover: album5, ...t.hero.player.playlists[1]! },
               ].map((playlist) => (
                 <button
                   key={playlist.title}
@@ -218,7 +218,9 @@ export function Hero() {
                   />
                   <div className="min-w-0">
                     <p className="truncate text-sm font-medium">{playlist.title}</p>
-                    <p className="truncate text-xs text-muted-foreground">{playlist.meta}</p>
+                    <p className="truncate text-xs text-muted-foreground">
+                      {playlist.count} {t.hero.songsCount}
+                    </p>
                   </div>
                 </button>
               ))}
@@ -237,14 +239,16 @@ export function Hero() {
               className="size-10 rounded-xl object-cover"
             />
             <div>
-              <p className="text-sm font-medium">Amara Sey</p>
-              <p className="text-xs text-muted-foreground">+1,204 new fans</p>
+              <p className="text-sm font-medium">{t.hero.player.featuredArtist}</p>
+              <p className="text-xs text-muted-foreground">+1,204 {t.hero.newFans}</p>
             </div>
           </div>
 
           <div className="glass absolute -right-2 -bottom-6 hidden rounded-2xl p-4 shadow-[var(--shadow-soft)] animate-float-slow sm:block lg:-right-4">
-            <p className="text-xs text-muted-foreground">Monthly streams</p>
-            <p className="font-display text-2xl font-bold text-primary">128,940</p>
+            <p className="text-xs text-muted-foreground">{t.hero.monthlyStreams}</p>
+            <p className="font-display text-2xl font-bold text-primary">
+              {t.hero.player.monthlyStreamsCount}
+            </p>
           </div>
         </div>
       </div>

@@ -5,13 +5,7 @@ import {
   formatStat,
   type PlatformStats,
 } from "@/lib/platform-stats";
-
-const labels: { key: keyof PlatformStats; label: string }[] = [
-  { key: "songs", label: "Songs" },
-  { key: "artists", label: "Artists" },
-  { key: "listeners", label: "Listeners" },
-  { key: "cities", label: "Cities" },
-];
+import { useLocale } from "@/i18n/locale";
 
 function Stat({
   value,
@@ -55,9 +49,17 @@ function StatSkeleton() {
 }
 
 export function Stats() {
+  const { t } = useLocale();
   const { ref, inView } = useInView<HTMLDivElement>(0.3);
   const [stats, setStats] = useState<PlatformStats | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const labels: { key: keyof PlatformStats; label: string }[] = [
+    { key: "songs", label: t.stats.songs },
+    { key: "artists", label: t.stats.artists },
+    { key: "listeners", label: t.stats.listeners },
+    { key: "cities", label: t.stats.cities },
+  ];
 
   useEffect(() => {
     let cancelled = false;
@@ -81,7 +83,7 @@ export function Stats() {
   }, []);
 
   return (
-    <section aria-label="Asrapa Music by the numbers" className="section-shell">
+    <section aria-label={t.stats.label} className="section-shell">
       <div
         ref={ref}
         className="mx-auto grid max-w-[1400px] grid-cols-2 gap-3 container-pad sm:gap-4 lg:grid-cols-4 lg:gap-6"

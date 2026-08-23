@@ -4,15 +4,17 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Reveal } from "./Reveal";
+import { useLocale } from "@/i18n/locale";
 
 export function Newsletter() {
+  const { t } = useLocale();
   const [email, setEmail] = useState("");
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!email) return;
-    toast.success("You're on the list", {
-      description: "New drops and platform updates are on the way.",
+    toast.success(t.newsletter.toastTitle, {
+      description: t.newsletter.toastBody,
     });
     setEmail("");
   };
@@ -23,23 +25,23 @@ export function Newsletter() {
         <div className="glass grid gap-8 rounded-[28px] p-7 sm:rounded-[32px] sm:p-10 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:p-12">
           <div>
             <span className="text-xs font-medium tracking-[0.25em] text-primary uppercase">
-              Newsletter
+              {t.newsletter.eyebrow}
             </span>
             <h2 className="mt-3 text-2xl leading-[1.1] font-bold sm:text-3xl">
-              New music, straight to your inbox
+              {t.newsletter.title}
             </h2>
             <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
-              Weekly drops, artist spotlights and product updates. No spam — unsubscribe anytime.
+              {t.newsletter.body}
             </p>
           </div>
 
           <form
             onSubmit={onSubmit}
             className="flex flex-col gap-3 sm:flex-row"
-            aria-label="Newsletter signup"
+            aria-label={t.newsletter.formLabel}
           >
             <label htmlFor="newsletter-email" className="sr-only">
-              Email address
+              {t.newsletter.email}
             </label>
             <div className="relative flex-1">
               <Mail
@@ -58,7 +60,7 @@ export function Newsletter() {
               />
             </div>
             <Button type="submit" size="lg" className="h-12 rounded-full px-7">
-              Subscribe
+              {t.newsletter.subscribe}
             </Button>
           </form>
         </div>

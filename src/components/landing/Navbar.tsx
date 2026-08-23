@@ -2,26 +2,27 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "./Logo";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { getAppDownloadUrl, LINKS, type AppDownloadUrl } from "./links";
 import { cn } from "@/lib/utils";
-
-const links = [
-  { label: "Home", href: "#home" },
-  { label: "The Manifesto", href: "#manifesto" },
-  { label: "How it works", href: "#how-it-works" },
-  // { label: "Discover", href: "#discover" },
-  { label: "For Artists", href: "#artists" },
-  { label: "Join the network", href: "#agents" },
-  // { label: "Features", href: "#features" },
-  { label: "Catalog", href: "#catalog" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
-];
+import { useLocale } from "@/i18n/locale";
 
 export function Navbar() {
+  const { t } = useLocale();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [listenUrl, setListenUrl] = useState<AppDownloadUrl>(LINKS.playStore);
+
+  const links = [
+    { label: t.nav.home, href: "#home" },
+    { label: t.nav.manifesto, href: "#manifesto" },
+    { label: t.nav.howItWorks, href: "#how-it-works" },
+    { label: t.nav.artists, href: "#artists" },
+    { label: t.nav.network, href: "#agents" },
+    { label: t.nav.catalog, href: "#catalog" },
+    { label: t.nav.faq, href: "#faq" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     setListenUrl(getAppDownloadUrl());
@@ -58,14 +59,14 @@ export function Navbar() {
     >
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus-visible:font-medium focus:text-primary-foreground"
       >
-        Skip to content
+        {t.nav.skip}
       </a>
 
       <nav
-        aria-label="Main"
-        className="mx-auto grid max-w-[1400px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 container-pad py-3"
+        aria-label={t.nav.main}
+        className="mx-auto grid max-w-[1400px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 container-pad py-3"
       >
         <a
           href="#home"
@@ -85,29 +86,28 @@ export function Navbar() {
             </a>
           ))}
           <div className="ml-3 flex items-center gap-2">
-            {/* <Button asChild variant="ghost" className="rounded-full">
-              <a href={listenUrl} target="_blank" rel="noopener noreferrer">
-                Login
-              </a>
-            </Button> */}
+            <LanguageSwitcher />
             <Button asChild className="rounded-full">
               <a href={listenUrl} target="_blank" rel="noopener noreferrer">
-                Get Started
+                {t.nav.getStarted}
               </a>
             </Button>
           </div>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-          className="grid size-11 shrink-0 place-items-center rounded-xl border border-border bg-secondary/60 transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring xl:hidden"
-        >
-          {open ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}
-        </button>
+        <div className="flex items-center gap-2 xl:hidden">
+          <LanguageSwitcher />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
+            className="grid size-11 shrink-0 place-items-center rounded-xl border border-border bg-secondary/60 transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {open ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}
+          </button>
+        </div>
       </nav>
 
       {open ? (
@@ -128,12 +128,12 @@ export function Navbar() {
           <div className="grid gap-2.5">
             <Button asChild variant="outline" className="h-11 rounded-full">
               <a href={listenUrl} target="_blank" rel="noopener noreferrer">
-                Login
+                {t.nav.login}
               </a>
             </Button>
             <Button asChild className="h-11 rounded-full">
               <a href={listenUrl} target="_blank" rel="noopener noreferrer">
-                Get Started
+                {t.nav.getStarted}
               </a>
             </Button>
           </div>
