@@ -28,7 +28,7 @@ export const translations = {
       titleBefore: "Reconnect",
       titleAccent: "with your culture",
       titleAfter: "",
-      body: "Urban music, traditional music, great classics, sketches, shows — all audio content from Chad, accessible on your smartphone or small phone.",
+      body: "Urban music, traditional music, great classics, sketches, shows all audio content from Chad, accessible on your smartphone or small phone.",
       preorder: "Pre-order the app for free",
       artistCta: "I am an artist",
       trust: [
@@ -37,9 +37,11 @@ export const translations = {
         { value: "Independent", label: "Artists" },
       ],
       nowPlaying: "Now Playing",
+      spotlight: "Trending now",
       like: "Like this track",
       previous: "Previous track",
       play: "Play",
+      pause: "Pause",
       next: "Next track",
       shuffle: "Shuffle",
       progress: "Playback progress",
@@ -64,8 +66,8 @@ export const translations = {
       paragraphs: [
         "In our African customs, cultural memory has always been oral. It is passed down from generation to generation.",
         "Listening is the foundation of our civilizations. It is on this foundation that our peoples have been built.",
-        "That's why we created ASRAPA — so that the sounds of yesterday and those of today continue to transmit our cultures to those of tomorrow.",
-        "A sound has the power to reveal an identity. Not just that of an individual—that of an entire people.",
+        "That's why we created ASRAPA so that the sounds of yesterday and those of today continue to transmit our cultures to those of tomorrow.",
+        "A sound has the power to reveal an identity. Not just that of an individual that of an entire people.",
       ],
       closeBefore: "One Sound.",
       closeAccent: "One Identity.",
@@ -77,7 +79,7 @@ export const translations = {
       partners: ["Artists", "Fans", "Music Creators", "Streaming Community", "Labels", "Studios"],
     },
     stats: {
-      label: "Asrapa Music by the numbers",
+      label: "Asrapa by the numbers",
       songs: "Songs",
       artists: "Artists",
       listeners: "Listeners",
@@ -87,12 +89,12 @@ export const translations = {
       eyebrow: "Accessible to all",
       title: "It works on all phones.",
       description:
-        "Whether you have a state-of-the-art smartphone or a classic phone (Aptorche, Tchoronko…) ASRAPA adapts to you — not the other way around.",
+        "Whether you have a state-of-the-art smartphone or a classic phone (Aptorche, Tchoronko…) ASRAPA adapts to you not the other way around.",
       viewRates: "View all rates",
       channels: [
         {
           title: "Smartphone",
-          body: "Premium listening on modern devices — streaming, downloads and offline play.",
+          body: "Premium listening on modern devices streaming, downloads and offline play.",
           plans: [
             {
               name: "Premium",
@@ -148,12 +150,8 @@ export const translations = {
     network: {
       eyebrow: "Join the network",
       title: "Sell Chadian music, without changing your habits.",
-      body: "Whether you are already a market reseller, Canal+ partner or mobile banking agent, ASRAPA integrates with what you already do — without disrupting anything.",
+      body: "Whether you are already a market reseller, partner or mobile banking agent, ASRAPA integrates with what you already do without disrupting anything.",
       channelsAria: "Reseller partner channels",
-      noteAria: "Important note about reseller commissions",
-      noteTitle: "Important note",
-      noteBody:
-        "Only the reseller rate at the market (50 FCFA per sale) is confirmed. Canal+ and mobile banking commissions are not yet finalized: do not invent any figures or publish any numbers until ASRAPA has validated them.",
       become: "Becoming a reseller/distributor",
       howNetwork: "How does the network work?",
       channels: [
@@ -164,7 +162,7 @@ export const translations = {
           confirmed: true,
         },
         {
-          title: "Canal+ Partner",
+          title: "partner",
           rate: "Commission to be confirmed",
           body: "Commission not yet finalized — rate to be announced once validated by ASRAPA.",
           confirmed: false,
@@ -181,7 +179,7 @@ export const translations = {
       eyebrow: "Explore the catalogue",
       title: "All the sounds of Chad, in one place.",
       description:
-        "Urban music, traditional music, great classics, sketches, shows — the catalogue is built with Chadian artists and creators.",
+        "Urban music, traditional music, great classics, sketches, shows the catalogue is built with Chadian artists and creators.",
       coming: "The catalogue is coming.",
       comingBody: "The first content will be available at the launch of the application.",
       notify: "Be notified of the launch",
@@ -196,8 +194,8 @@ export const translations = {
     },
     why: {
       eyebrow: "Why Asrapa",
-      title: "Why Choose Asrapa Music",
-      body: "We built Asrapa for the sound of a new generation — and for the people making it.",
+      title: "Why Choose Asrapa",
+      body: "We built Asrapa for the sound of a new generation and for the people making it.",
       imageAlt: "Independent artist producing music in a home studio with headphones",
       reasons: [
         {
@@ -210,7 +208,7 @@ export const translations = {
         },
         {
           title: "Fast Streaming",
-          body: "Edge delivery tuned for African networks — playback starts instantly.",
+          body: "Edge delivery tuned for African network playback starts instantly.",
         },
         {
           title: "Beautiful Interface",
@@ -235,28 +233,22 @@ export const translations = {
       next: "Next testimonial",
       items: [
         {
-          name: "Tayo Cole",
-          role: "Afrobeats Artist, Lagos",
+          name: "Ramaji",
+          role: "Artist, Chad",
           quote:
-            "I uploaded my EP on a Friday and had 12,000 streams by Monday. The analytics showed me exactly which cities to book shows in.",
+            "ASRAPA is a platform designed for us, Chadian artists. It allows us to promote our music more effectively, reach audiences both in Chad and in the diaspora, and build a stronger connection with our fans. It is a true showcase for our culture and our talents.",
         },
         {
-          name: "Amara Sey",
-          role: "Independent Singer, Accra",
+          name: "Rocky La Citadelle",
+          role: "Artist, Chad",
           quote:
-            "Asrapa pays fairly and treats independent artists like the main act, not an afterthought. My fanbase finally feels like mine.",
+            "With ASRAPA, Chadian music finally has a space entirely dedicated to it. The platform gives artists greater visibility and gives our work the recognition it deserves. It is an important initiative for promoting our musical identity beyond our borders.",
         },
         {
-          name: "Kelvin Obi",
-          role: "Asrapa Agent, Enugu",
+          name: "Ghis Beat",
+          role: "Sound Engineer, Chad",
           quote:
-            "I signed up 300 subscribers in my first two months. Commissions land on time and the agent dashboard makes follow-ups easy.",
-        },
-        {
-          name: "Zainab Bello",
-          role: "Listener, Abuja",
-          quote:
-            "The recommendations actually understand my taste. I have found more new African artists here in a month than anywhere else in a year.",
+            "As a sound engineer, ASRAPA represents a great opportunity to showcase all the work that goes into every song. The platform encourages artists and music professionals to produce higher-quality work. It can also strengthen the entire Chadian music industry, from studio production all the way to the audience listening to the music.",
         },
       ],
     },
@@ -264,7 +256,7 @@ export const translations = {
       eyebrow: "App Preview",
       title: "Your whole library, in your pocket",
       description:
-        "Now playing, search, playlists and artist profiles — designed for one-handed listening.",
+        "Now playing, search, playlists and artist profiles designed for one handed listening.",
       nowPlaying: "Now Playing",
       playlist: "Playlist",
       artistProfile: "Artist Profile",
@@ -274,6 +266,49 @@ export const translations = {
       follow: "Follow",
       songs: "songs",
       followers: "followers",
+      playlistName: "Voix du Kanem",
+      playlistDuration: "1h 42m",
+      artistName: "Rocky La Citadelle",
+      artistLocation: "Chad",
+      followerCount: "9,412",
+      tracks: [
+        {
+          title: "N'Djamena",
+          artist: "Ibrahim Khalil",
+          duration: "3:42",
+          tag: "Urban music",
+        },
+        {
+          title: "Kanem",
+          artist: "Mounira Mitchala",
+          duration: "4:05",
+          tag: "Traditional music",
+        },
+        {
+          title: "Sahel",
+          artist: "Rocky La Citadelle",
+          duration: "3:18",
+          tag: "Urban music",
+        },
+        {
+          title: "Tibesti",
+          artist: "Ramaji",
+          duration: "5:01",
+          tag: "Great classics",
+        },
+        {
+          title: "Chari",
+          artist: "Ghis Beat",
+          duration: "6:24",
+          tag: "Sketches",
+        },
+        {
+          title: "Mbororo",
+          artist: "Ensemble Kanem",
+          duration: "4:47",
+          tag: "Traditional music",
+        },
+      ],
     },
     cta: {
       title: "Ready to Experience Music Differently?",
@@ -304,7 +339,7 @@ export const translations = {
         },
         {
           q: "How to become a reseller?",
-          a: "Whether you're a market vendor, Canal+ partner, or mobile banking agent, you can join the ASRAPA network. The Bunda package earns 50 FCFA per sale for market vendors.",
+          a: "Whether you're a market vendor, partner, or mobile banking agent, you can join the ASRAPA network. The Bunda package earns 50 FCFA per sale for market vendors.",
         },
         {
           q: "Does it work without a smartphone?",
@@ -327,18 +362,23 @@ export const translations = {
       formLabel: "Newsletter signup",
       email: "Email address",
       subscribe: "Subscribe",
+      submitting: "Subscribing…",
       toastTitle: "You're on the list",
       toastBody: "New drops and platform updates are on the way.",
+      toastAlreadyTitle: "Already subscribed",
+      toastAlreadyBody: "This email is already on our newsletter list.",
+      toastErrorTitle: "Could not subscribe",
+      toastErrorBody: "Something went wrong. Please try again in a moment.",
     },
     stores: {
-      appAria: "Download Asrapa Music on the App Store",
+      appAria: "Download Asrapa on the App Store",
       appOn: "Download on the",
-      playAria: "Get Asrapa Music on Google Play",
+      playAria: "Get AsraPa on Google Play",
       playOn: "Get it on",
     },
     footer: {
       blurb:
-        "Urban music, traditional music, great classics, sketches, shows — all audio content from Chad, accessible on your smartphone or small phone.",
+        "Urban music, traditional music, great classics, sketches, shows all audio content from Chad, accessible on your smartphone or small phone.",
       nav: "Footer",
       rights: "All rights reserved.",
       made: "Made for artists, fans and agents across Africa.",
@@ -375,7 +415,7 @@ export const translations = {
           title: "Legal",
           links: [
             { label: "Privacy Policy", href: "#contact" },
-            { label: "Terms of Service", href: "#contact" },
+            { label: "Terms of Service", href: "https://artists.asrapa.com/terms" },
             { label: "Cookie Policy", href: "#contact" },
             { label: "Licensing", href: "#contact" },
           ],
@@ -409,9 +449,9 @@ export const translations = {
     },
     hero: {
       badge: "ASRAPA — STREAMING 100 % TCHADIEN",
-      titleBefore: "La musique",
-      titleAccent: "sans",
-      titleAfter: "limites.",
+      titleBefore: "Reconnectez-vous",
+      titleAccent: "à votre culture",
+      titleAfter: "",
       body: "Musique urbaine, musique traditionnelle, grands classiques, sketches, émissions — tout le contenu audio du Tchad, accessible sur smartphone ou téléphone simple.",
       preorder: "Précommander l'appli gratuitement",
       artistCta: "Je suis artiste",
@@ -421,9 +461,11 @@ export const translations = {
         { value: "Des artistes", label: "indépendants" },
       ],
       nowPlaying: "En lecture",
+      spotlight: "Tendance",
       like: "Aimer ce titre",
       previous: "Titre précédent",
       play: "Lecture",
+      pause: "Pause",
       next: "Titre suivant",
       shuffle: "Aléatoire",
       progress: "Progression de lecture",
@@ -461,7 +503,7 @@ export const translations = {
       partners: ["Artistes", "Fans", "Créateurs", "Communauté streaming", "Labels", "Studios"],
     },
     stats: {
-      label: "Asrapa Music en chiffres",
+      label: "AsraPa en chiffres",
       songs: "Titres",
       artists: "Artistes",
       listeners: "Auditeurs",
@@ -532,12 +574,8 @@ export const translations = {
     network: {
       eyebrow: "Rejoindre le réseau",
       title: "Vendez la musique tchadienne, sans changer vos habitudes.",
-      body: "Que vous soyez déjà revendeur de marché, partenaire Canal+ ou agent de mobile banking, ASRAPA s'intègre à ce que vous faites déjà — sans rien bouleverser.",
+      body: "Que vous soyez déjà revendeur de marché, partenaire+ ou agent de mobile banking, ASRAPA s'intègre à ce que vous faites déjà — sans rien bouleverser.",
       channelsAria: "Canaux partenaires revendeurs",
-      noteAria: "Note importante sur les commissions revendeurs",
-      noteTitle: "Note importante",
-      noteBody:
-        "Seul le tarif revendeur au marché (50 FCFA par vente) est confirmé. Les commissions Canal+ et mobile banking ne sont pas encore finalisées : aucun chiffre ne sera publié tant qu'ASRAPA ne les aura pas validés.",
       become: "Devenir revendeur / distributeur",
       howNetwork: "Comment fonctionne le réseau ?",
       channels: [
@@ -580,7 +618,7 @@ export const translations = {
     },
     why: {
       eyebrow: "Pourquoi Asrapa",
-      title: "Pourquoi choisir Asrapa Music",
+      title: "Pourquoi choisir Asrapa",
       body: "Nous avons conçu Asrapa pour le son d'une nouvelle génération — et pour ceux qui le font.",
       imageAlt: "Artiste indépendant en studio, casque sur les oreilles",
       reasons: [
@@ -606,41 +644,36 @@ export const translations = {
         },
         {
           title: "Un écosystème qui grandit",
-          body: "Fans, artistes et revendeurs grandissent ensemble sur une seule plateforme.",
+          body: "Fans, artistes et agents grandissent ensemble sur une seule plateforme.",
         },
       ],
     },
     testimonials: {
       eyebrow: "Témoignages",
-      title: "Aimé des artistes, des fans et des revendeurs",
-      description: "Des récits de ceux qui construisent leur son et leurs revenus sur Asrapa.",
+      title: "Aimé des artistes, des fans et des agents",
+      description:
+        "Des histoires vraies de ceux qui construisent leur son et leurs revenus sur Asrapa.",
       stars: "sur 5 étoiles",
       prev: "Témoignage précédent",
       next: "Témoignage suivant",
       items: [
         {
-          name: "Tayo Cole",
-          role: "Artiste afrobeats, Lagos",
+          name: "Ramaji",
+          role: "Artiste, Tchad",
           quote:
-            "J'ai mis en ligne mon EP un vendredi et j'avais 12 000 écoutes le lundi. Les analytics m'ont montré exactement dans quelles villes programmer des concerts.",
+            "ASRAPA est une plateforme pensée pour nous, les artistes tchadiens. Elle nous permet de mieux promouvoir notre musique, de toucher un public au Tchad comme dans la diaspora, et de renforcer le lien avec nos fans. C'est une vitrine pour notre culture et nos talents.",
         },
         {
-          name: "Amara Sey",
-          role: "Chanteuse indépendante, Accra",
+          name: "Rocky La Citadelle",
+          role: "Artiste, Tchad",
           quote:
-            "Asrapa paie équitablement et traite les artistes indépendants comme des têtes d'affiche, pas comme une option. Ma communauté me appartient enfin.",
+            "Avec ASRAPA, la musique tchadienne a enfin un espace qui lui est entièrement dédié. La plateforme donne aux artistes une plus grande visibilité et à nos œuvres la reconnaissance qu'elles méritent. C'est une initiative importante pour faire rayonner notre identité musicale au-delà de nos frontières.",
         },
         {
-          name: "Kelvin Obi",
-          role: "Agent Asrapa, Enugu",
+          name: "Ghis Beat",
+          role: "Ingénieur du son, Tchad",
           quote:
-            "J'ai inscrit 300 abonnés dès les deux premiers mois. Les commissions arrivent à temps et le tableau de bord rend le suivi simple.",
-        },
-        {
-          name: "Zainab Bello",
-          role: "Auditrice, Abuja",
-          quote:
-            "Les recommandations comprennent vraiment mon goût. J'ai découvert plus d'artistes africains ici en un mois qu'ailleurs en un an.",
+            "En tant qu'ingénieur du son, ASRAPA représente une belle opportunité de mettre en valeur tout le travail derrière chaque morceau. La plateforme encourage les artistes et les professionnels de la musique à produire un travail de meilleure qualité. Elle peut aussi renforcer toute la filière musicale tchadienne, de la production en studio jusqu'à l'auditeur.",
         },
       ],
     },
@@ -658,10 +691,53 @@ export const translations = {
       follow: "Suivre",
       songs: "titres",
       followers: "abonnés",
+      playlistName: "Voix du Kanem",
+      playlistDuration: "1 h 42 min",
+      artistName: "Rocky La Citadelle",
+      artistLocation: "Tchad",
+      followerCount: "9 412",
+      tracks: [
+        {
+          title: "N'Djamena",
+          artist: "Ibrahim Khalil",
+          duration: "3:42",
+          tag: "Musique urbaine",
+        },
+        {
+          title: "Kanem",
+          artist: "Mounira Mitchala",
+          duration: "4:05",
+          tag: "Musique traditionnelle",
+        },
+        {
+          title: "Sahel",
+          artist: "Rocky La Citadelle",
+          duration: "3:18",
+          tag: "Musique urbaine",
+        },
+        {
+          title: "Tibesti",
+          artist: "Ramaji",
+          duration: "5:01",
+          tag: "Grands classiques",
+        },
+        {
+          title: "Chari",
+          artist: "Ghis Beat",
+          duration: "6:24",
+          tag: "Sketches",
+        },
+        {
+          title: "Mbororo",
+          artist: "Ensemble Kanem",
+          duration: "4:47",
+          tag: "Musique traditionnelle",
+        },
+      ],
     },
     cta: {
       title: "Prêt à vivre la musique autrement ?",
-      body: "Rejoignez les auditeurs, artistes et revendeurs qui écrivent le prochain chapitre de la musique africaine sur Asrapa.",
+      body: "Rejoignez les auditeurs, artistes et agents qui écrivent le prochain chapitre de la musique africaine sur Asrapa.",
       getStarted: "Commencer",
       joinArtist: "Rejoindre en artiste",
     },
@@ -688,7 +764,7 @@ export const translations = {
         },
         {
           q: "Comment devenir revendeur ?",
-          a: "Que vous soyez vendeur de marché, partenaire Canal+ ou agent de mobile banking, vous pouvez rejoindre le réseau ASRAPA. Le forfait Bunda rapporte 50 FCFA par vente aux revendeurs de marché.",
+          a: "Que vous soyez vendeur de marché, partenaire ou agent de mobile banking, vous pouvez rejoindre le réseau ASRAPA. Le forfait Bunda rapporte 50 FCFA par vente aux revendeurs de marché.",
         },
         {
           q: "Est-ce que ça marche sans smartphone ?",
@@ -711,13 +787,18 @@ export const translations = {
       formLabel: "Inscription à la newsletter",
       email: "Adresse e-mail",
       subscribe: "S'inscrire",
+      submitting: "Inscription…",
       toastTitle: "Vous êtes sur la liste",
       toastBody: "Les nouvelles sorties et les mises à jour de la plateforme arrivent.",
+      toastAlreadyTitle: "Déjà inscrit",
+      toastAlreadyBody: "Cette adresse e-mail est déjà inscrite à notre newsletter.",
+      toastErrorTitle: "Inscription impossible",
+      toastErrorBody: "Une erreur s'est produite. Veuillez réessayer dans un instant.",
     },
     stores: {
-      appAria: "Télécharger Asrapa Music sur l'App Store",
+      appAria: "Télécharger Asrapa sur l'App Store",
       appOn: "Télécharger sur",
-      playAria: "Obtenir Asrapa Music sur Google Play",
+      playAria: "Obtenir Asrapa sur Google Play",
       playOn: "Disponible sur",
     },
     footer: {
@@ -725,7 +806,7 @@ export const translations = {
         "Musique urbaine, musique traditionnelle, grands classiques, sketches, émissions — tout le contenu audio du Tchad, accessible sur smartphone ou téléphone simple.",
       nav: "Pied de page",
       rights: "Tous droits réservés.",
-      made: "Conçu pour les artistes, les fans et les revendeurs à travers l'Afrique.",
+      made: "Conçu pour les artistes, les fans et les agents à travers l'Afrique.",
       columns: [
         {
           title: "Liens rapides",

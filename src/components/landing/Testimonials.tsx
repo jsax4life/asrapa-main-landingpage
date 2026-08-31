@@ -13,8 +13,8 @@ import avatar2 from "@/assets/avatar-2.jpg";
 import avatar3 from "@/assets/avatar-3.jpg";
 import { useLocale } from "@/i18n/locale";
 
-const avatars = [avatar1, avatar2, avatar3, avatar2];
-const ratings = [5, 5, 4, 5];
+const avatars = [avatar1, avatar2, avatar3];
+const ratings = [5, 5, 5];
 
 export function Testimonials() {
   const { t } = useLocale();

@@ -1,4 +1,4 @@
-/** Central destination URLs for Asrapa Music CTAs. */
+/** Central destination URLs for AsraPa CTAs. */
 export const LINKS = {
   artists: "https://artists.asrapa.com/",
   agents: "https://agents.asrapa.com/",
@@ -6,6 +6,8 @@ export const LINKS = {
   appStore: "https://apps.apple.com/app/asrapa-music",
   /** Update when the Play Store package name is finalized. */
   playStore: "https://play.google.com/store/apps/details?id=com.asrapa.music",
+  facebook: "https://www.facebook.com/profile.php?id=61593168059708&ref=1",
+  instagram: "https://www.instagram.com/asrapa_chad?igsi=MTEycHR4c3RpanF0cw==",
 } as const;
 
 export type AppDownloadUrl = (typeof LINKS)["appStore"] | (typeof LINKS)["playStore"];

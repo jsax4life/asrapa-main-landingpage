@@ -26,7 +26,7 @@ export function Logo({
     <span className={cn("inline-flex items-center", className)}>
       <img
         src={asset.src}
-        alt="AsraPa Music"
+        alt="AsraPa"
         width={asset.width}
         height={asset.height}
         decoding="async"

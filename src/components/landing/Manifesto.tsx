@@ -10,7 +10,7 @@ export function Manifesto() {
       aria-labelledby="manifesto-heading"
       className="scroll-mt-24 border-y border-border/40 bg-background"
     >
-      <div className="mx-auto max-w-[1400px] container-pad py-24 sm:py-32 lg:py-40">
+      <div className="mx-auto max-w-[1400px] container-pad py-12 sm:py-16 lg:py-20">
         <Reveal className="mx-auto max-w-2xl text-center sm:max-w-3xl">
           <p className="text-xs font-medium tracking-[0.3em] text-primary uppercase">
             {t.manifesto.eyebrow}

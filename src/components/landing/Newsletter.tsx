@@ -1,22 +1,43 @@
 import { useState, type FormEvent } from "react";
-import { Mail } from "lucide-react";
+import { Loader2, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Reveal } from "./Reveal";
 import { useLocale } from "@/i18n/locale";
+import { NewsletterSubscribeError, subscribeNewsletter } from "@/lib/newsletter";
 
 export function Newsletter() {
   const { t } = useLocale();
   const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!email) return;
-    toast.success(t.newsletter.toastTitle, {
-      description: t.newsletter.toastBody,
-    });
-    setEmail("");
+    if (!email || submitting) return;
+
+    setSubmitting(true);
+    try {
+      const result = await subscribeNewsletter(email);
+      if (result === "already_subscribed") {
+        toast.success(t.newsletter.toastAlreadyTitle, {
+          description: t.newsletter.toastAlreadyBody,
+        });
+      } else {
+        toast.success(t.newsletter.toastTitle, {
+          description: t.newsletter.toastBody,
+        });
+      }
+      setEmail("");
+    } catch (error) {
+      const description =
+        error instanceof NewsletterSubscribeError && error.message
+          ? error.message
+          : t.newsletter.toastErrorBody;
+      toast.error(t.newsletter.toastErrorTitle, { description });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -53,14 +74,27 @@ export function Newsletter() {
                 type="email"
                 required
                 autoComplete="email"
+                disabled={submitting}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
                 className="h-12 rounded-full border-border bg-secondary/50 pl-11 focus-visible:ring-2 focus-visible:ring-ring"
               />
             </div>
-            <Button type="submit" size="lg" className="h-12 rounded-full px-7">
-              {t.newsletter.subscribe}
+            <Button
+              type="submit"
+              size="lg"
+              disabled={submitting}
+              className="h-12 rounded-full px-7"
+            >
+              {submitting ? (
+                <>
+                  <Loader2 className="size-4 animate-spin" aria-hidden />
+                  {t.newsletter.submitting}
+                </>
+              ) : (
+                t.newsletter.subscribe
+              )}
             </Button>
           </form>
         </div>

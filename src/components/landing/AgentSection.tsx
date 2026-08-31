@@ -1,4 +1,4 @@
-import { AlertTriangle, Music2, Radio, Smartphone } from "lucide-react";
+import { Music2, Radio, Smartphone } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
@@ -70,21 +70,7 @@ export function AgentSection() {
             {t.network.body}
           </p>
 
-          <div
-            className="mt-8 flex gap-3 rounded-2xl border border-primary/25 bg-primary/8 p-4"
-            role="note"
-            aria-label={t.network.noteAria}
-          >
-            <AlertTriangle className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
-            <div className="min-w-0">
-              <p className="font-display text-sm font-bold">{t.network.noteTitle}</p>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                {t.network.noteBody}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg" className="rounded-full px-7">
               <a href={LINKS.agents} target="_blank" rel="noopener noreferrer">
                 {t.network.become}

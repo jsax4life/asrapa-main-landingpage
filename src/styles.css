@@ -154,7 +154,7 @@
   );
   --shadow-soft: 0 28px 64px -28px oklch(0 0 0 / 0.85);
   --shadow-glow: 0 18px 56px -16px color-mix(in oklab, var(--primary) 55%, transparent);
-  --section-y: clamp(4.5rem, 8vw, 7rem);
+  --section-y: clamp(2.25rem, 3.75vw, 3.5rem);
   --container-px: clamp(1.25rem, 3vw, 2.5rem);
   --chart-1: oklch(0.628 0.2577 29.23);
   --chart-2: oklch(0.72 0 0);

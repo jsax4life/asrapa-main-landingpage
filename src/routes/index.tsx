@@ -17,10 +17,11 @@ import { FAQ } from "@/components/landing/FAQ";
 import { Newsletter } from "@/components/landing/Newsletter";
 import { Footer } from "@/components/landing/Footer";
 import { LocaleProvider } from "@/i18n/locale";
+import { LandingSpotlightPlayerProvider } from "@/components/landing/spotlight-player-context";
 
-const title = "Asrapa Music — Reconnect with your culture | Stream African Music";
+const title = "AsraPa — Reconnect with your culture | Stream African Music";
 const description =
-  "Asrapa Music connects artists, fans and agents. Stream unlimited African music, release your songs, track analytics and earn as an agent.";
+  "AsraPa connects artists, fans and agents. Stream unlimited African music, release your songs, track analytics and earn as an agent.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,23 +31,23 @@ export const Route = createFileRoute("/")({
       {
         name: "keywords",
         content:
-          "Asrapa Music, African music streaming, Afrobeats, Amapiano, independent artists, music agents Nigeria",
+          "AsraPa, African music streaming, Afrobeats, Amapiano, independent artists, music agents Nigeria",
       },
       { name: "theme-color", content: "#FF0000" },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "Asrapa Music — Reconnect with your culture" },
+      { property: "og:title", content: "AsraPa — Reconnect with your culture" },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Asrapa Music" },
+      { property: "og:site_name", content: "AsraPa" },
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Asrapa Music — Reconnect with your culture" },
+      { name: "twitter:title", content: "AsraPa — Reconnect with your culture" },
       { name: "twitter:description", content: description },
       {
         "script:ld+json": {
           "@context": "https://schema.org",
           "@type": "WebApplication",
-          name: "Asrapa Music",
+          name: "AsraPa",
           applicationCategory: "MultimediaApplication",
           operatingSystem: "Web",
           description,
@@ -57,7 +58,7 @@ export const Route = createFileRoute("/")({
           },
           brand: {
             "@type": "Brand",
-            name: "Asrapa Music",
+            name: "AsraPa",
           },
         },
       },
@@ -69,7 +70,8 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <LocaleProvider>
-      <div className="min-h-screen bg-background text-foreground">
+      <LandingSpotlightPlayerProvider>
+        <div className="min-h-screen bg-background text-foreground">
         <Navbar />
         <main id="main">
           <Hero />
@@ -90,6 +92,7 @@ function Index() {
         <Footer />
         <Toaster />
       </div>
+      </LandingSpotlightPlayerProvider>
     </LocaleProvider>
   );
 }

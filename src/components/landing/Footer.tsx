@@ -34,11 +34,11 @@ function XIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 const socials = [
-  { label: "Facebook", Icon: Facebook },
-  { label: "Instagram", Icon: Instagram },
-  { label: "TikTok", Icon: TikTok },
-  { label: "YouTube", Icon: Youtube },
-  { label: "X", Icon: XIcon },
+  { label: "Facebook", Icon: Facebook, href: LINKS.facebook, external: true },
+  { label: "Instagram", Icon: Instagram, href: LINKS.instagram, external: true },
+  { label: "TikTok", Icon: TikTok, href: "#contact", external: false },
+  { label: "YouTube", Icon: Youtube, href: "#contact", external: false },
+  { label: "X", Icon: XIcon, href: "#contact", external: false },
 ];
 
 export function Footer() {
@@ -60,10 +60,11 @@ export function Footer() {
             </p>
             <StoreBadges className="mt-5" />
             <ul className="mt-6 flex flex-wrap gap-2">
-              {socials.map(({ label, Icon }) => (
+              {socials.map(({ label, Icon, href, external }) => (
                 <li key={label}>
                   <a
-                    href="#contact"
+                    href={href}
+                    {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     aria-label={label}
                     className="grid size-10 place-items-center rounded-full border border-border bg-secondary/40 text-muted-foreground transition-all duration-200 hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
@@ -100,7 +101,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-3 border-t border-border/70 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} Asrapa Music. {t.footer.rights}
+            © {new Date().getFullYear()} Asrapa. {t.footer.rights}
           </p>
           <p>{t.footer.made}</p>
         </div>
