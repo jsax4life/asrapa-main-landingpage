@@ -370,6 +370,13 @@ export const translations = {
       toastErrorTitle: "Could not subscribe",
       toastErrorBody: "Something went wrong. Please try again in a moment.",
     },
+    contact: {
+      title: "Contact us directly",
+      emailLabel: "Email",
+      phoneLabel: "Phone",
+      email: "infos@asrapa.com",
+      phones: ["00 235 87 50 91 91", "00 235 30 14 34 34"],
+    },
     stores: {
       appAria: "Download Asrapa on the App Store",
       appOn: "Download on the",
@@ -406,9 +413,12 @@ export const translations = {
           title: "Support",
           links: [
             { label: "Help Centre", href: "#faq" },
-            { label: "Contact Us", href: "#contact" },
-            { label: "Report an Issue", href: "#contact" },
-            { label: "Community", href: "#catalog" },
+            { label: "Contact Us", href: "#contact-toggle" },
+            {
+              label: "Report an Issue",
+              href: "mailto:infos@asrapa.com?subject=Issue%20report%20%E2%80%94%20AsraPa",
+              external: true,
+            },
           ],
         },
         {
@@ -448,12 +458,12 @@ export const translations = {
       switchToFr: "Passer en français",
     },
     hero: {
-      badge: "ASRAPA — STREAMING 100 % TCHADIEN",
-      titleBefore: "Reconnectez-vous",
-      titleAccent: "à votre culture",
+      badge: "ASRAPA-LE STREAMING 100% TCHADIEN",
+      titleBefore: "Reconnekt",
+      titleAccent: "Ta Culture.",
       titleAfter: "",
-      body: "Musique urbaine, musique traditionnelle, grands classiques, sketches, émissions — tout le contenu audio du Tchad, accessible sur smartphone ou téléphone simple.",
-      preorder: "Précommander l'appli gratuitement",
+      body: "Musique traditionnelle, urbaine, grands classiques, podcast, tous les contenus audio du Tchad, accessibles sur ton smartphone ou ton petit téléphone.",
+      preorder: "Précommander gratuitement l'application",
       artistCta: "Je suis artiste",
       trust: [
         { value: "Des milliers", label: "de titres" },
@@ -485,17 +495,17 @@ export const translations = {
       },
     },
     manifesto: {
-      eyebrow: "Pourquoi Asrapa",
+      eyebrow: "Pourquoi AsraPa",
       heading: "Le manifeste",
       paragraphs: [
         "Dans nos coutumes africaines, la mémoire culturelle a toujours été orale. Elle se transmet de génération en génération.",
-        "L'écoute est le fondement de nos civilisations. C'est sur cette base que nos peuples se sont construits.",
-        "C'est pourquoi nous avons créé ASRAPA — pour que les sons d'hier et ceux d'aujourd'hui continuent de transmettre nos cultures à ceux de demain.",
-        "Un son a le pouvoir de révéler une identité. Pas seulement celle d'un individu — celle de tout un peuple.",
+        "L'écoute est le socle de nos civilisations. C'est sur elle que se sont construits nos peuples.",
+        "C'est pour ça que nous avons créé AsraPa pour que les sons d'hier et ceux d'aujourd'hui continuent de transmettre nos cultures à ceux de demain.",
+        "Un son a le pouvoir de révéler une identité. Pas seulement celle d'un individu celle de tout un peuple.",
       ],
-      closeBefore: "Un son.",
-      closeAccent: "Une identité.",
-      closeAfter: "Un peuple.",
+      closeBefore: "Un Son.",
+      closeAccent: "Une Identité.",
+      closeAfter: "Un Peuple.",
     },
     social: {
       label: "Ils nous font confiance",
@@ -513,12 +523,12 @@ export const translations = {
       eyebrow: "Accessible à tous",
       title: "Ça marche sur tous les téléphones.",
       description:
-        "Que vous ayez un smartphone dernière génération ou un téléphone classique (Aptorche, Tchoronko…), ASRAPA s'adapte à vous — pas l'inverse.",
+        "Que vous ayez un smartphone dernière génération ou un téléphone classique (Aptorche, Tchoronko…), AsraPa s'adapte à vous, pas l'inverse.",
       viewRates: "Voir tous les tarifs",
       channels: [
         {
           title: "Smartphone",
-          body: "Écoute premium sur appareils modernes — streaming, téléchargements et lecture hors ligne.",
+          body: "Écoute premium sur appareils modernes : streaming, téléchargements et lecture hors ligne.",
           plans: [
             {
               name: "Premium",
@@ -536,7 +546,7 @@ export const translations = {
         {
           title: "Petit téléphone (KaiOS)",
           price: "1 000 FCFA / mois",
-          body: "Accès à ASRAPA depuis un téléphone à clavier compatible KaiOS.",
+          body: "Accès à AsraPa depuis un téléphone à clavier compatible KaiOS.",
         },
         {
           title: "Téléphone classique (USSD)",
@@ -553,7 +563,7 @@ export const translations = {
     artists: {
       eyebrow: "Vivre de sa musique",
       title: "Votre musique mérite d'être payée à sa juste valeur.",
-      body: "Selon nos études, le CRBT (Fonds du patrimoine culturel tchadien) n'a versé que 4 % de droits d'auteur à certains artistes. Les ventes physiques ont disparu. YouTube ne rémunère pas les contenus produits au Tchad. Les plateformes mondiales de streaming sont mal adaptées aux réalités des artistes et créateurs tchadiens. ASRAPA change la donne.",
+      body: "Selon nos études, le CRBT (Fonds du patrimoine culturel tchadien) n'a versé que 4 % de droits d'auteur à certains artistes. Les ventes physiques ont disparu. YouTube ne rémunère pas les contenus produits au Tchad. Les plateformes mondiales de streaming sont mal adaptées aux réalités des artistes et créateurs tchadiens. AsraPa change la donne.",
       highlight1Strong: "65 % des revenus reviennent aux artistes",
       highlight1Rest: ", répartis selon vos écoutes réelles. 35 % financent la plateforme.",
       highlight2Strong: "Rapport trimestriel transparent",
@@ -574,7 +584,7 @@ export const translations = {
     network: {
       eyebrow: "Rejoindre le réseau",
       title: "Vendez la musique tchadienne, sans changer vos habitudes.",
-      body: "Que vous soyez déjà revendeur de marché, partenaire+ ou agent de mobile banking, ASRAPA s'intègre à ce que vous faites déjà — sans rien bouleverser.",
+      body: "Que vous soyez déjà revendeur de marché, partenaire ou agent de mobile banking, AsraPa s'intègre à ce que vous faites déjà, sans rien bouleverser.",
       channelsAria: "Canaux partenaires revendeurs",
       become: "Devenir revendeur / distributeur",
       howNetwork: "Comment fonctionne le réseau ?",
@@ -582,19 +592,19 @@ export const translations = {
         {
           title: "Revendeur de marché",
           rate: "50 FCFA par vente",
-          body: "Le forfait Bunda vous rapporte autant que votre offre actuelle — 50 FCFA par vente.",
+          body: "Le forfait Bunda vous rapporte autant que votre offre actuelle : 50 FCFA par vente.",
           confirmed: true,
         },
         {
-          title: "Partenaire Canal+",
+          title: "Partenaire",
           rate: "Commission à confirmer",
-          body: "Commission non encore finalisée — le tarif sera annoncé une fois validé par ASRAPA.",
+          body: "Commission non encore finalisée. Le tarif sera annoncé une fois validé par AsraPa.",
           confirmed: false,
         },
         {
           title: "Partenaire mobile banking",
           rate: "Commission à confirmer",
-          body: "Commission non encore finalisée — le tarif sera annoncé une fois validé par ASRAPA.",
+          body: "Commission non encore finalisée. Le tarif sera annoncé une fois validé par AsraPa.",
           confirmed: false,
         },
       ],
@@ -603,7 +613,7 @@ export const translations = {
       eyebrow: "Explorer le catalogue",
       title: "Tous les sons du Tchad, au même endroit.",
       description:
-        "Musique urbaine, musique traditionnelle, grands classiques, sketches, émissions — le catalogue se construit avec les artistes et créateurs tchadiens.",
+        "Musique urbaine, musique traditionnelle, grands classiques, sketches, émissions : le catalogue se construit avec les artistes et créateurs tchadiens.",
       coming: "Le catalogue arrive.",
       comingBody: "Les premiers contenus seront disponibles au lancement de l'application.",
       notify: "Être prévenu du lancement",
@@ -617,9 +627,9 @@ export const translations = {
       ],
     },
     why: {
-      eyebrow: "Pourquoi Asrapa",
-      title: "Pourquoi choisir Asrapa",
-      body: "Nous avons conçu Asrapa pour le son d'une nouvelle génération — et pour ceux qui le font.",
+      eyebrow: "Pourquoi AsraPa",
+      title: "Pourquoi choisir AsraPa ?",
+      body: "Nous avons conçu AsraPa pour le son d'une nouvelle génération, et pour ceux qui le font.",
       imageAlt: "Artiste indépendant en studio, casque sur les oreilles",
       reasons: [
         {
@@ -632,7 +642,7 @@ export const translations = {
         },
         {
           title: "Streaming rapide",
-          body: "Une diffusion pensée pour les réseaux africains — la lecture démarre immédiatement.",
+          body: "Une diffusion pensée pour les réseaux africains : la lecture démarre immédiatement.",
         },
         {
           title: "Interface soignée",
@@ -652,7 +662,7 @@ export const translations = {
       eyebrow: "Témoignages",
       title: "Aimé des artistes, des fans et des agents",
       description:
-        "Des histoires vraies de ceux qui construisent leur son et leurs revenus sur Asrapa.",
+        "Des histoires vraies de ceux qui construisent leur son et leurs revenus sur AsraPa.",
       stars: "sur 5 étoiles",
       prev: "Témoignage précédent",
       next: "Témoignage suivant",
@@ -661,19 +671,19 @@ export const translations = {
           name: "Ramaji",
           role: "Artiste, Tchad",
           quote:
-            "ASRAPA est une plateforme pensée pour nous, les artistes tchadiens. Elle nous permet de mieux promouvoir notre musique, de toucher un public au Tchad comme dans la diaspora, et de renforcer le lien avec nos fans. C'est une vitrine pour notre culture et nos talents.",
+            "AsraPa est une plateforme pensée pour nous, les artistes tchadiens. Elle nous permet de mieux promouvoir notre musique, de toucher un public au Tchad comme dans la diaspora, et de renforcer le lien avec nos fans. C'est une vitrine pour notre culture et nos talents.",
         },
         {
           name: "Rocky La Citadelle",
           role: "Artiste, Tchad",
           quote:
-            "Avec ASRAPA, la musique tchadienne a enfin un espace qui lui est entièrement dédié. La plateforme donne aux artistes une plus grande visibilité et à nos œuvres la reconnaissance qu'elles méritent. C'est une initiative importante pour faire rayonner notre identité musicale au-delà de nos frontières.",
+            "Avec AsraPa, la musique tchadienne a enfin un espace qui lui est entièrement dédié. La plateforme donne aux artistes une plus grande visibilité et à nos œuvres la reconnaissance qu'elles méritent. C'est une initiative importante pour faire rayonner notre identité musicale au-delà de nos frontières.",
         },
         {
           name: "Ghis Beat",
           role: "Ingénieur du son, Tchad",
           quote:
-            "En tant qu'ingénieur du son, ASRAPA représente une belle opportunité de mettre en valeur tout le travail derrière chaque morceau. La plateforme encourage les artistes et les professionnels de la musique à produire un travail de meilleure qualité. Elle peut aussi renforcer toute la filière musicale tchadienne, de la production en studio jusqu'à l'auditeur.",
+            "En tant qu'ingénieur du son, AsraPa représente une belle opportunité de mettre en valeur tout le travail derrière chaque morceau. La plateforme encourage les artistes et les professionnels de la musique à produire un travail de meilleure qualité. Elle peut aussi renforcer toute la filière musicale tchadienne, de la production en studio jusqu'à l'auditeur.",
         },
       ],
     },
@@ -681,7 +691,7 @@ export const translations = {
       eyebrow: "Aperçu de l'appli",
       title: "Toute votre bibliothèque, dans la poche",
       description:
-        "Lecture en cours, recherche, playlists et profils d'artistes — pensés pour une écoute à une main.",
+        "Lecture en cours, recherche, playlists et profils d'artistes, pensés pour une écoute à une main.",
       nowPlaying: "En lecture",
       playlist: "Playlist",
       artistProfile: "Profil artiste",
@@ -737,7 +747,7 @@ export const translations = {
     },
     cta: {
       title: "Prêt à vivre la musique autrement ?",
-      body: "Rejoignez les auditeurs, artistes et agents qui écrivent le prochain chapitre de la musique africaine sur Asrapa.",
+      body: "Rejoignez les auditeurs, artistes et agents qui écrivent le prochain chapitre de la musique africaine sur AsraPa.",
       getStarted: "Commencer",
       joinArtist: "Rejoindre en artiste",
     },
@@ -747,8 +757,8 @@ export const translations = {
       description: "Tout ce qu'il faut savoir avant d'appuyer sur lecture.",
       items: [
         {
-          q: "Qu'est-ce qu'ASRAPA ?",
-          a: "ASRAPA est la plateforme de streaming 100 % tchadienne : musique urbaine, musique traditionnelle, grands classiques, sketches et émissions, accessible sur smartphone comme sur petit téléphone.",
+          q: "Qu'est-ce qu'AsraPa ?",
+          a: "AsraPa est la plateforme de streaming 100 % tchadienne : musique urbaine, musique traditionnelle, grands classiques, sketches et émissions, accessible sur smartphone comme sur petit téléphone.",
         },
         {
           q: "Quand l'application sera-t-elle disponible ?",
@@ -756,19 +766,19 @@ export const translations = {
         },
         {
           q: "Je suis à l'étranger, comment m'abonner ?",
-          a: "Vous pourrez vous abonner depuis l'étranger via l'application ASRAPA dès son lancement. Les options d'accès et de paiement pour la diaspora seront précisées au lancement ; inscrivez-vous à la newsletter pour recevoir les consignes officielles.",
+          a: "Vous pourrez vous abonner depuis l'étranger via l'application AsraPa dès son lancement. Les options d'accès et de paiement pour la diaspora seront précisées au lancement ; inscrivez-vous à la newsletter pour recevoir les consignes officielles.",
         },
         {
           q: "Comment déposer un catalogue ?",
-          a: "Créez un compte artiste sur le portail artistes ASRAPA, vérifiez votre identité, puis téléversez vos titres ou votre catalogue depuis le tableau de bord. Les sorties sont mises en ligne après une courte revue qualité.",
+          a: "Créez un compte artiste sur le portail artistes AsraPa, vérifiez votre identité, puis téléversez vos titres ou votre catalogue depuis le tableau de bord. Les sorties sont mises en ligne après une courte revue qualité.",
         },
         {
           q: "Comment devenir revendeur ?",
-          a: "Que vous soyez vendeur de marché, partenaire ou agent de mobile banking, vous pouvez rejoindre le réseau ASRAPA. Le forfait Bunda rapporte 50 FCFA par vente aux revendeurs de marché.",
+          a: "Que vous soyez vendeur de marché, partenaire ou agent de mobile banking, vous pouvez rejoindre le réseau AsraPa. Le forfait Bunda rapporte 50 FCFA par vente aux revendeurs de marché.",
         },
         {
           q: "Est-ce que ça marche sans smartphone ?",
-          a: "Oui. ASRAPA est accessible sur les petits téléphones KaiOS (1 000 FCFA/mois) et sur les téléphones classiques via USSD (500 FCFA/mois).",
+          a: "Oui. AsraPa est accessible sur les petits téléphones KaiOS (1 000 FCFA/mois) et sur les téléphones classiques via USSD (500 FCFA/mois).",
         },
         {
           q: "Comment les artistes sont-ils payés ?",
@@ -776,14 +786,14 @@ export const translations = {
         },
         {
           q: "Puis-je payer avec le mobile money ?",
-          a: "Oui. ASRAPA est pensé pour les habitudes de paiement locales : abonnez-vous et renouvelez via le mobile money, à travers notre réseau de revendeurs et partenaires. Les artistes peuvent aussi recevoir leurs paiements par mobile money.",
+          a: "Oui. AsraPa est pensé pour les habitudes de paiement locales : abonnez-vous et renouvelez via le mobile money, à travers notre réseau de revendeurs et partenaires. Les artistes peuvent aussi recevoir leurs paiements par mobile money.",
         },
       ],
     },
     newsletter: {
       eyebrow: "Newsletter",
       title: "La nouvelle musique, directement dans votre boîte mail",
-      body: "Sorties de la semaine, portraits d'artistes et actualités produit. Pas de spam — désinscription à tout moment.",
+      body: "Sorties de la semaine, portraits d'artistes et actualités produit. Pas de spam, désinscription à tout moment.",
       formLabel: "Inscription à la newsletter",
       email: "Adresse e-mail",
       subscribe: "S'inscrire",
@@ -795,15 +805,22 @@ export const translations = {
       toastErrorTitle: "Inscription impossible",
       toastErrorBody: "Une erreur s'est produite. Veuillez réessayer dans un instant.",
     },
+    contact: {
+      title: "Nous contacter directement",
+      emailLabel: "E-mail",
+      phoneLabel: "Téléphone",
+      email: "infos@asrapa.com",
+      phones: ["00 235 87 50 91 91", "00 235 30 14 34 34"],
+    },
     stores: {
-      appAria: "Télécharger Asrapa sur l'App Store",
+      appAria: "Télécharger AsraPa sur l'App Store",
       appOn: "Télécharger sur",
-      playAria: "Obtenir Asrapa sur Google Play",
+      playAria: "Obtenir AsraPa sur Google Play",
       playOn: "Disponible sur",
     },
     footer: {
       blurb:
-        "Musique urbaine, musique traditionnelle, grands classiques, sketches, émissions — tout le contenu audio du Tchad, accessible sur smartphone ou téléphone simple.",
+        "Musique urbaine, musique traditionnelle, grands classiques, sketches, émissions : tout le contenu audio du Tchad, accessible sur smartphone ou téléphone simple.",
       nav: "Pied de page",
       rights: "Tous droits réservés.",
       made: "Conçu pour les artistes, les fans et les agents à travers l'Afrique.",
@@ -820,7 +837,7 @@ export const translations = {
         {
           title: "Entreprise",
           links: [
-            { label: "À propos d'Asrapa", href: "#home" },
+            { label: "À propos d'AsraPa", href: "#home" },
             { label: "Pour les artistes", href: "artists", external: true },
             { label: "Rejoindre le réseau", href: "agents", external: true },
             { label: "Carrières", href: "#contact" },
@@ -831,9 +848,12 @@ export const translations = {
           title: "Assistance",
           links: [
             { label: "Centre d'aide", href: "#faq" },
-            { label: "Nous contacter", href: "#contact" },
-            { label: "Signaler un problème", href: "#contact" },
-            { label: "Communauté", href: "#catalog" },
+            { label: "Nous contacter", href: "#contact-toggle" },
+            {
+              label: "Signaler un problème",
+              href: "mailto:infos@asrapa.com?subject=Signalement%20d%27un%20probl%C3%A8me%20%E2%80%94%20AsraPa",
+              external: true,
+            },
           ],
         },
         {

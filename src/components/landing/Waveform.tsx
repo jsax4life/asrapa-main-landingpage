@@ -11,7 +11,7 @@ export function Waveform({ className, active = true }: { className?: string; act
           className="w-full flex-1 origin-bottom rounded-full bg-gradient-to-t from-primary/50 to-primary"
           style={{
             height: `${height}%`,
-            animation: `equalize ${0.8 + (i % 5) * 0.18}s ease-in-out ${i * 0.05}s infinite alternate`,
+            animation: `equalize ${0.32 + (i % 4) * 0.09}s ease-in-out ${i * 0.025}s infinite alternate`,
             animationPlayState: active ? "running" : "paused",
           }}
         />

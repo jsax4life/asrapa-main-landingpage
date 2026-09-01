@@ -1,4 +1,5 @@
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { useState } from "react";
+import { Facebook, Instagram, Mail, Phone, Youtube } from "lucide-react";
 import { Logo } from "./Logo";
 import { LINKS } from "./links";
 import { StoreBadges } from "./StoreBadges";
@@ -43,9 +44,10 @@ const socials = [
 
 export function Footer() {
   const { t } = useLocale();
+  const [contactOpen, setContactOpen] = useState(false);
 
   return (
-    <footer className="border-t border-border/70 bg-surface/70">
+    <footer id="contact" className="scroll-mt-24 border-t border-border/70 bg-surface/70">
       <div className="mx-auto max-w-[1400px] container-pad py-14">
         <div className="grid gap-10 lg:grid-cols-[1.3fr_2.7fr]">
           <div>
@@ -80,19 +82,56 @@ export function Footer() {
               <div key={column.title}>
                 <h3 className="font-display text-sm font-bold">{column.title}</h3>
                 <ul className="mt-4 space-y-2.5">
-                  {column.links.map((link) => (
-                    <li key={link.label}>
-                      <a
-                        href={resolveHref(link.href)}
-                        {...("external" in link && link.external
-                          ? { target: "_blank", rel: "noopener noreferrer" }
-                          : {})}
-                        className="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
+                  {column.links.map((link) =>
+                    link.href === "#contact-toggle" ? (
+                      <li key={link.label}>
+                        <button
+                          type="button"
+                          aria-expanded={contactOpen}
+                          onClick={() => setContactOpen((v) => !v)}
+                          className="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        >
+                          {link.label}
+                        </button>
+                        {contactOpen ? (
+                          <ul className="mt-3 space-y-2 border-l border-border/70 pl-3 text-sm">
+                            <li>
+                              <a
+                                href={`mailto:${t.contact.email}`}
+                                className="inline-flex items-center gap-2 text-foreground/90 transition-colors hover:text-primary"
+                              >
+                                <Mail className="size-4 text-primary" aria-hidden />
+                                {t.contact.email}
+                              </a>
+                            </li>
+                            {t.contact.phones.map((phone) => (
+                              <li key={phone}>
+                                <a
+                                  href={`tel:${phone.replace(/\s/g, "")}`}
+                                  className="inline-flex items-center gap-2 text-foreground/90 transition-colors hover:text-primary"
+                                >
+                                  <Phone className="size-4 text-primary" aria-hidden />
+                                  {phone}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : null}
+                      </li>
+                    ) : (
+                      <li key={link.label}>
+                        <a
+                          href={resolveHref(link.href)}
+                          {...("external" in link && link.external
+                            ? { target: "_blank", rel: "noopener noreferrer" }
+                            : {})}
+                          className="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ),
+                  )}
                 </ul>
               </div>
             ))}
@@ -101,7 +140,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-3 border-t border-border/70 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} Asrapa. {t.footer.rights}
+            © {new Date().getFullYear()} AsraPa. {t.footer.rights}
           </p>
           <p>{t.footer.made}</p>
         </div>
