@@ -41,7 +41,7 @@ export function Newsletter() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-24 container-pad section-shell">
+    <section className="container-pad section-shell">
       <Reveal className="mx-auto max-w-[1400px]">
         <div className="glass grid gap-8 rounded-[28px] p-7 sm:rounded-[32px] sm:p-10 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:p-12">
           <div>

@@ -20,7 +20,7 @@ export function Manifesto() {
           </h2>
         </Reveal>
 
-        <div className="mx-auto mt-14 max-w-xl space-y-10 text-center sm:mt-16 sm:max-w-2xl sm:space-y-12 lg:mt-20 lg:max-w-3xl lg:space-y-14">
+        <div className="mx-auto mt-14 max-w-xl space-y-5 text-center sm:mt-16 sm:max-w-2xl sm:space-y-6 lg:mt-20 lg:max-w-3xl lg:space-y-7">
           {t.manifesto.paragraphs.map((text, i) => (
             <Reveal key={text} delay={i * 90}>
               <p className="font-display text-xl leading-[1.55] font-medium tracking-[-0.02em] text-foreground/90 sm:text-2xl sm:leading-[1.5] lg:text-[1.75rem] lg:leading-[1.55]">

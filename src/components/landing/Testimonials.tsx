@@ -8,12 +8,12 @@ import {
 } from "@/components/ui/carousel";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
-import avatar1 from "@/assets/avatar-1.jpg";
-import avatar2 from "@/assets/avatar-2.jpg";
-import avatar3 from "@/assets/avatar-3.jpg";
+import avatarRamaji from "@/assets/testimonial-ramaji.jpg";
+import avatarRocky from "@/assets/testimonial-rocky.jpg";
+import avatarGhisBeat from "@/assets/testimonial-ghis-beat.jpg";
 import { useLocale } from "@/i18n/locale";
 
-const avatars = [avatar1, avatar2, avatar3];
+const avatars = [avatarRamaji, avatarRocky, avatarGhisBeat];
 const ratings = [5, 5, 5];
 
 export function Testimonials() {
@@ -54,7 +54,7 @@ export function Testimonials() {
                       </blockquote>
                       <figcaption className="mt-6 flex min-w-0 items-center gap-3">
                         <img
-                          src={avatars[i] ?? avatar1}
+                          src={avatars[i] ?? avatarRamaji}
                           alt=""
                           loading="lazy"
                           decoding="async"
