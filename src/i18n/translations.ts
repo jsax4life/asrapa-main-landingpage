@@ -448,12 +448,12 @@ export const translations = {
       switchToFr: "Passer en français",
     },
     hero: {
-      badge: "ASRAPA — STREAMING 100 % TCHADIEN",
-      titleBefore: "Reconnectez-vous",
-      titleAccent: "à votre culture",
+      badge: "ASRAPA-LE STREAMING 100% TCHADIEN",
+      titleBefore: "Reconnekt",
+      titleAccent: "Ta Culture.",
       titleAfter: "",
-      body: "Musique urbaine, musique traditionnelle, grands classiques, sketches, émissions — tout le contenu audio du Tchad, accessible sur smartphone ou téléphone simple.",
-      preorder: "Précommander l'appli gratuitement",
+      body: "Musique urbaine, musique traditionnelle, grands classiques, sketchs, émissions tous les contenus audios du Tchad, accessibles sur ton smartphone ou ton petit téléphone.",
+      preorder: "Précommander gratuitement l'application",
       artistCta: "Je suis artiste",
       trust: [
         { value: "Des milliers", label: "de titres" },
