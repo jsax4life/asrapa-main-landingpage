@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AsraPa — Reconnec with your culture " },
+      { title: "AsraPa — Un Son. Une Identité. Un Peuple." },
       {
         name: "description",
         content:
@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "AsraPa" },
       { name: "theme-color", content: "#FF0000" },
       { name: "color-scheme", content: "dark" },
-      { property: "og:title", content: "AsraPa — Reconnect  with your culture " },
+      { property: "og:title", content: "AsraPa — Un Son. Une Identité. Un Peuple." },
       {
         property: "og:description",
         content:
@@ -95,7 +95,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "AsraPa" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "AsraPa — Reconnect with your culture " },
+      { name: "twitter:title", content: "AsraPa — Un Son. Une Identité. Un Peuple." },
     ],
     links: [
       {
