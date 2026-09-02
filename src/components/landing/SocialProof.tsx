@@ -5,7 +5,7 @@ export function SocialProof() {
   const { t } = useLocale();
 
   return (
-    <section aria-label={t.social.label} className="border-y border-border/70 bg-surface/70 py-10 sm:py-12">
+    <section aria-label={t.social.label} className="border-y border-border/70 bg-surface/70 section-shell">
       <Reveal className="mx-auto max-w-[1400px] container-pad">
         <p className="text-center text-xs tracking-[0.25em] text-muted-foreground uppercase">
           {t.social.heading}

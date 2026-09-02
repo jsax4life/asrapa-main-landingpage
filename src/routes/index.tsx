@@ -19,7 +19,7 @@ import { Footer } from "@/components/landing/Footer";
 import { LocaleProvider } from "@/i18n/locale";
 import { LandingSpotlightPlayerProvider } from "@/components/landing/spotlight-player-context";
 
-const title = "AsraPa — Reconnect with your culture | Stream African Music";
+const title = "AsraPa — Un Son. Une Identité. Un Peuple.";
 const description =
   "AsraPa connects artists, fans and agents. Stream unlimited African music, release your songs, track analytics and earn as an agent.";
 
@@ -35,13 +35,13 @@ export const Route = createFileRoute("/")({
       },
       { name: "theme-color", content: "#FF0000" },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "AsraPa — Reconnect with your culture" },
+      { property: "og:title", content: "AsraPa — Un Son. Une Identité. Un Peuple." },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "AsraPa" },
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "AsraPa — Reconnect with your culture" },
+      { name: "twitter:title", content: "AsraPa — Un Son. Une Identité. Un Peuple." },
       { name: "twitter:description", content: description },
       {
         "script:ld+json": {

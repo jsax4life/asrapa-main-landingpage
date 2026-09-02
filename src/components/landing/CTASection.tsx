@@ -15,7 +15,7 @@ export function CTASection() {
   }, []);
 
   return (
-    <section className="container-pad pb-[var(--section-y)]">
+    <section className="container-pad section-shell">
       <Reveal className="mx-auto max-w-[1400px]">
         <div className="bg-brand-gradient relative overflow-hidden rounded-[28px] border border-primary/20 px-6 py-14 text-center shadow-[var(--shadow-glow)] sm:rounded-[32px] sm:px-12 sm:py-16 lg:py-24">
           <div
