@@ -40,9 +40,12 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "AsraPa" },
       { property: "og:locale", content: "en_US" },
+      { property: "og:image", content: "https://asrapa.com/og-image.png" },
+      { property: "og:url", content: "https://asrapa.com/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "AsraPa — Reconnect with your culture" },
       { name: "twitter:description", content: description },
+      { name: "twitter:image", content: "https://asrapa.com/og-image.png" },
       {
         "script:ld+json": {
           "@context": "https://schema.org",
