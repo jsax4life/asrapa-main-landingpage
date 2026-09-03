@@ -29,18 +29,22 @@ export function useInView<T extends HTMLElement>(threshold = 0.15) {
 }
 
 /** Counts up to a target value once visible. */
-export function useCountUp(target: number, active: boolean, duration = 1600) {
+export function useCountUp(target: number, active: boolean, duration = 700) {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
     if (!active) return;
+    if (target <= 0) {
+      setValue(target);
+      return;
+    }
     let frame = 0;
     const start = performance.now();
     const tick = (now: number) => {
       const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setValue(Math.round(target * eased));
+      setValue(Math.max(1, Math.round(target * progress)));
       if (progress < 1) frame = requestAnimationFrame(tick);
+      else setValue(target);
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
