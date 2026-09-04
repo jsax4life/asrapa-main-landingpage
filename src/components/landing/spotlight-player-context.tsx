@@ -26,6 +26,7 @@ import type { Messages } from "@/i18n/translations";
 
 const fallbackCovers = [album2, album5];
 const LIKED_STORAGE_KEY = "asrapa:liked-tracks";
+const PREVIEW_SECONDS = 15;
 
 export type QueueTrack = {
   id: string;
@@ -214,16 +215,28 @@ export function LandingSpotlightPlayerProvider({ children }: { children: ReactNo
   }, [locale, t]);
 
   const track = queue[currentIndex] ?? queue[0];
+  const rawDuration = track?.duration || 0;
+  // Landing page only plays a short 15s teaser of each track, never the full song.
+  const duration = rawDuration > 0 ? Math.min(rawDuration, PREVIEW_SECONDS) : 0;
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    const onTimeUpdate = () => setCurrentTime(audio.currentTime);
-    const onEnded = () => {
+    const advance = () => {
       setCurrentIndex((i) => (queue.length > 0 ? (i + 1) % queue.length : i));
       setCurrentTime(0);
     };
+
+    const onTimeUpdate = () => {
+      if (audio.currentTime >= duration) {
+        audio.pause();
+        advance();
+        return;
+      }
+      setCurrentTime(audio.currentTime);
+    };
+    const onEnded = advance;
     const onPause = () => setIsPlaying(false);
     const onPlay = () => setIsPlaying(true);
 
@@ -238,7 +251,7 @@ export function LandingSpotlightPlayerProvider({ children }: { children: ReactNo
       audio.removeEventListener("pause", onPause);
       audio.removeEventListener("play", onPlay);
     };
-  }, [queue.length]);
+  }, [queue.length, duration]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -253,7 +266,6 @@ export function LandingSpotlightPlayerProvider({ children }: { children: ReactNo
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [track?.songUrl]);
 
-  const duration = track?.duration || 0;
   const progress = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
 
   const togglePlayback = useCallback(async () => {
@@ -319,8 +331,9 @@ export function LandingSpotlightPlayerProvider({ children }: { children: ReactNo
     () => ({
       ...(track ?? buildFallbackQueue(t)[0]),
       ...meta,
+      duration,
     }),
-    [track, meta, t],
+    [track, meta, t, duration],
   );
 
   const value = useMemo(
