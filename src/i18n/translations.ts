@@ -342,6 +342,10 @@ export const translations = {
           a: "1. Profile photo: square (1:1 ratio), recommended size 800 × 800 px (minimum 500 × 500 px), JPEG, PNG or WebP. Center your face, since the edges are cropped by the circular display.\n2. Profile banner: landscape format (ratio about 3:1 to 4.5:1), recommended size 1600 × 500 px, JPEG, PNG or WebP. Avoid text or faces near the left/right edges, often cropped on mobile.\n3. Track or album cover: perfect square (1:1 ratio), recommended size 3000 × 3000 px (minimum 1000 × 1000 px), JPEG, PNG or WebP.\nImportant: photos must be professional artist photos only — no social media information (handle, logo, QR code, watermark, link).",
         },
         {
+          q: "I don't have professional profile photos, what do I do?",
+          a: "If you don't have professional photos yet (portrait, banner, cover art), the AsraPa team can take care of it for you with the Photo Pro Pack.\n1. Contact: let the AsraPa team know you'd like the Photo Pro Pack.\n2. Booking: a photo session slot is scheduled with our partner photographer, based on availability.\n3. Photo session: a short session (portrait + a few variations) to cover profile, banner and cover art.\n4. Delivery: the finished visuals (800 × 800 px profile photo, 1600 × 500 px banner, 3000 × 3000 px cover art) are sent to you and added to your AsraPa profile.\nContact the AsraPa team: infos@asrapa.com",
+        },
+        {
           q: "How do I become a reseller?",
           a: "Whether you're a market vendor, a partner, or a mobile banking agent, you can join the AsraPa network. The Bunda package earns market vendors 50 FCFA per sale.",
         },
@@ -779,6 +783,10 @@ export const translations = {
         {
           q: "Quels formats de photo dois-je fournir (profil, bannière, pochette) ?",
           a: "1. Photo de profil : carré (ratio 1:1), taille conseillée 800 × 800 px (minimum 500 × 500 px), JPEG, PNG ou WebP. Centrez le visage, car les bords sont coupés par l'affichage en cercle.\n2. Bannière de profil : format paysage (ratio environ 3:1 à 4,5:1), taille conseillée 1600 × 500 px, JPEG, PNG ou WebP. Évitez texte ou visage important sur les bords gauche/droite, souvent coupés sur mobile.\n3. Pochette de titre/album : carré parfait (ratio 1:1), taille conseillée 3000 × 3000 px (minimum 1000 × 1000 px), JPEG, PNG ou WebP.\nImportant : les photos doivent être uniquement des photos professionnelles de l'artiste — aucune information de réseaux sociaux (pseudo, logo, QR code, filigrane, lien).",
+        },
+        {
+          q: "Je n'ai pas de photos de profil professionnel, comment je fais ?",
+          a: "Si vous n'avez pas encore de photos professionnelles (portrait, bannière, pochette), l'équipe AsraPa peut s'en occuper pour vous avec le Pack Photo Pro.\n1. Contact : signalez à l'équipe AsraPa que vous souhaitez bénéficier du Pack Photo Pro.\n2. Prise de rendez-vous : un créneau de séance est fixé avec le photographe partenaire, selon les disponibilités.\n3. Séance photo : séance courte (portrait + quelques variantes) pour couvrir profil, bannière et pochette.\n4. Livraison : les visuels finalisés (photo de profil 800 × 800 px, bannière 1600 × 500 px, pochette 3000 × 3000 px) vous sont envoyés et intégrés à votre profil AsraPa.\nContactez l'équipe AsraPa : infos@asrapa.com",
         },
         {
           q: "Comment devenir revendeur ?",
