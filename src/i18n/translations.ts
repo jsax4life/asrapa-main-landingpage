@@ -338,6 +338,10 @@ export const translations = {
           a: "Create an artist account on the AsraPa artists portal, verify your identity, then upload your tracks or your full catalogue from the dashboard. Releases go live after a short quality review.",
         },
         {
+          q: "What photo formats do I need to provide (profile, banner, cover art)?",
+          a: "1. Profile photo: square (1:1 ratio), recommended size 800 × 800 px (minimum 500 × 500 px), JPEG, PNG or WebP. Center your face, since the edges are cropped by the circular display.\n2. Profile banner: landscape format (ratio about 3:1 to 4.5:1), recommended size 1600 × 500 px, JPEG, PNG or WebP. Avoid text or faces near the left/right edges, often cropped on mobile.\n3. Track or album cover: perfect square (1:1 ratio), recommended size 3000 × 3000 px (minimum 1000 × 1000 px), JPEG, PNG or WebP.\nImportant: photos must be professional artist photos only — no social media information (handle, logo, QR code, watermark, link).",
+        },
+        {
           q: "How do I become a reseller?",
           a: "Whether you're a market vendor, a partner, or a mobile banking agent, you can join the AsraPa network. The Bunda package earns market vendors 50 FCFA per sale.",
         },
@@ -771,6 +775,10 @@ export const translations = {
         {
           q: "Comment déposer un catalogue ?",
           a: "Créez un compte artiste sur le portail artistes AsraPa, vérifiez votre identité, puis téléversez vos titres ou votre catalogue depuis le tableau de bord. Les sorties sont mises en ligne après une courte revue qualité.",
+        },
+        {
+          q: "Quels formats de photo dois-je fournir (profil, bannière, pochette) ?",
+          a: "1. Photo de profil : carré (ratio 1:1), taille conseillée 800 × 800 px (minimum 500 × 500 px), JPEG, PNG ou WebP. Centrez le visage, car les bords sont coupés par l'affichage en cercle.\n2. Bannière de profil : format paysage (ratio environ 3:1 à 4,5:1), taille conseillée 1600 × 500 px, JPEG, PNG ou WebP. Évitez texte ou visage important sur les bords gauche/droite, souvent coupés sur mobile.\n3. Pochette de titre/album : carré parfait (ratio 1:1), taille conseillée 3000 × 3000 px (minimum 1000 × 1000 px), JPEG, PNG ou WebP.\nImportant : les photos doivent être uniquement des photos professionnelles de l'artiste — aucune information de réseaux sociaux (pseudo, logo, QR code, filigrane, lien).",
         },
         {
           q: "Comment devenir revendeur ?",
