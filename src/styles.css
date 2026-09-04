@@ -15,6 +15,9 @@
   --animate-spin-slow: spin 22s linear infinite;
   --animate-pulse-soft: pulse-soft 2.8s ease-in-out infinite;
   --animate-ken-burns: ken-burns 28s ease-in-out infinite alternate;
+  --animate-badge-in: badge-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-title-in: title-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-accent-glow: accent-glow 1.6s ease-out both;
 
   @keyframes fade-up {
     from {
@@ -24,6 +27,39 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+  @keyframes badge-in {
+    from {
+      opacity: 0;
+      transform: scale(0.88) translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  @keyframes title-in {
+    from {
+      opacity: 0;
+      transform: translateY(38px);
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+  @keyframes accent-glow {
+    0% {
+      text-shadow: 0 0 0 color-mix(in oklab, var(--primary) 0%, transparent);
+    }
+    45% {
+      text-shadow: 0 0 26px color-mix(in oklab, var(--primary) 60%, transparent);
+    }
+    100% {
+      text-shadow: 0 0 0 color-mix(in oklab, var(--primary) 0%, transparent);
     }
   }
   @keyframes float {

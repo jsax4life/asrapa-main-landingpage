@@ -10,9 +10,34 @@ import { useLocale } from "@/i18n/locale";
 export function Hero() {
   const { t } = useLocale();
   const [listenUrl, setListenUrl] = useState<AppDownloadUrl>(LINKS.playStore);
+  const [badgeReplayKey, setBadgeReplayKey] = useState(0);
+  const [titleReplayKey, setTitleReplayKey] = useState(0);
 
   useEffect(() => {
     setListenUrl(getAppDownloadUrl());
+  }, []);
+
+  // Badge replays every 15s, starting immediately.
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBadgeReplayKey((key) => key + 1);
+    }, 15000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Title replays every 15s too, but offset so it never lands on the same beat as the badge.
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    const offset = setTimeout(() => {
+      setTitleReplayKey((key) => key + 1);
+      interval = setInterval(() => {
+        setTitleReplayKey((key) => key + 1);
+      }, 15000);
+    }, 7500);
+    return () => {
+      clearTimeout(offset);
+      clearInterval(interval);
+    };
   }, []);
 
   return (
@@ -51,8 +76,11 @@ export function Hero() {
       />
 
       <div className="relative mx-auto grid max-w-[1400px] items-center gap-12 container-pad lg:grid-cols-2 lg:gap-14 xl:gap-16">
-        <div className="animate-fade-up">
-          <span className="glass inline-flex items-center gap-2.5 rounded-full px-4 py-2 text-xs font-medium tracking-[0.14em] text-muted-foreground uppercase">
+        <div>
+          <span
+            key={`badge-${badgeReplayKey}`}
+            className="glass animate-badge-in inline-flex items-center gap-2.5 rounded-full px-4 py-2 text-xs font-medium tracking-[0.14em] text-muted-foreground uppercase"
+          >
             <span className="relative flex size-2">
               <span className="absolute inset-0 animate-ping rounded-full bg-primary/60" />
               <span className="relative size-2 rounded-full bg-primary" />
@@ -61,14 +89,25 @@ export function Hero() {
           </span>
 
           <h1 className="mt-7 max-w-[14ch] text-[2.75rem] leading-[0.95] font-bold sm:text-6xl xl:text-7xl">
-            {t.hero.titleBefore} <span className="text-gradient">{t.hero.titleAccent}</span>
+            <span
+              key={`title-before-${titleReplayKey}`}
+              className="animate-title-in inline-block [animation-delay:160ms]"
+            >
+              {t.hero.titleBefore}
+            </span>{" "}
+            <span
+              key={`title-accent-${titleReplayKey}`}
+              className="text-gradient animate-title-in animate-accent-glow inline-block [animation-delay:340ms]"
+            >
+              {t.hero.titleAccent}
+            </span>
             {t.hero.titleAfter ? ` ${t.hero.titleAfter}` : null}
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="animate-fade-up mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg [animation-delay:520ms]">
             {t.hero.body}
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="animate-fade-up mt-9 flex flex-wrap gap-3 [animation-delay:600ms]">
             <Button asChild size="lg" className="rounded-full px-7">
               <a href={listenUrl} target="_blank" rel="noopener noreferrer">
                 <Play className="size-4 fill-current" aria-hidden />
@@ -81,9 +120,9 @@ export function Hero() {
               </a>
             </Button>
           </div>
-          <StoreBadges className="mt-5" />
+          <StoreBadges className="animate-fade-up mt-5 [animation-delay:670ms]" />
 
-          <dl className="mt-12 grid max-w-lg grid-cols-3 gap-3 sm:gap-5">
+          <dl className="animate-fade-up mt-12 grid max-w-lg grid-cols-3 gap-3 sm:gap-5 [animation-delay:740ms]">
             {t.hero.trust.map((item) => (
               <div key={item.label} className="border-l border-border/80 pl-3 sm:pl-4">
                 <dt className="font-display text-sm font-bold sm:text-base lg:text-lg">

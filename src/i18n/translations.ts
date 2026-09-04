@@ -458,7 +458,7 @@ export const translations = {
       switchToFr: "Passer en français",
     },
     hero: {
-      badge: "ASRAPA-LE STREAMING 100% TCHADIEN",
+      badge: "ASRAPA-LE STREAMING 100% TCHADIEN.",
       titleBefore: "Reconnekt",
       titleAccent: "Ta Culture.",
       titleAfter: "",
