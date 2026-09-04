@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Heart, Pause, Play, Shuffle, SkipBack, SkipForward } from "lucide-react";
 import { Waveform } from "./Waveform";
 import { useLocale } from "@/i18n/locale";
@@ -6,10 +7,54 @@ import { useLandingSpotlightPlayer } from "./spotlight-player-context";
 
 export function HeroPlayer() {
   const { locale, t } = useLocale();
-  const { view, isPlaying, currentTime, progress, canPlay, togglePlayback, formatDuration } =
-    useLandingSpotlightPlayer();
+  const {
+    view,
+    isPlaying,
+    currentTime,
+    progress,
+    canPlay,
+    canSkip,
+    isLiked,
+    togglePlayback,
+    playNext,
+    playPrevious,
+    shuffle,
+    seek,
+    toggleLike,
+    formatDuration,
+  } = useLandingSpotlightPlayer();
 
   const duration = view.duration || 0;
+  const trackRef = useRef<HTMLDivElement | null>(null);
+
+  const seekFromClientX = (clientX: number) => {
+    const el = trackRef.current;
+    if (!el || duration <= 0) return;
+    const rect = el.getBoundingClientRect();
+    const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    seek(ratio * duration);
+  };
+
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!canPlay || duration <= 0) return;
+    event.currentTarget.setPointerCapture(event.pointerId);
+    seekFromClientX(event.clientX);
+  };
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!canPlay || duration <= 0) return;
+    if (event.buttons !== 1) return;
+    seekFromClientX(event.clientX);
+  };
+
+  const handleSeekKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (!canPlay || duration <= 0) return;
+    if (event.key === "ArrowRight") {
+      seek(currentTime + 5);
+    } else if (event.key === "ArrowLeft") {
+      seek(currentTime - 5);
+    }
+  };
 
   return (
     <>
@@ -58,16 +103,28 @@ export function HeroPlayer() {
           <span>{formatDuration(duration)}</span>
         </div>
         <div
-          className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-secondary"
-          role="progressbar"
+          ref={trackRef}
+          className={`mt-1.5 h-1.5 w-full rounded-full bg-secondary ${canPlay && duration > 0 ? "cursor-pointer" : ""} group relative touch-none select-none py-2 -my-2`}
+          role="slider"
+          tabIndex={canPlay ? 0 : -1}
           aria-valuenow={Math.round(progress)}
           aria-valuemin={0}
           aria-valuemax={100}
           aria-label={t.hero.progress}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onKeyDown={handleSeekKeyDown}
         >
+          <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
+            <div
+              className="h-full rounded-full bg-primary transition-[width] duration-150"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
           <div
-            className="h-full rounded-full bg-primary transition-[width] duration-300"
-            style={{ width: `${progress}%` }}
+            aria-hidden
+            className="pointer-events-none absolute top-1/2 size-3 -translate-y-1/2 rounded-full bg-primary opacity-0 shadow-[var(--shadow-glow)] transition-opacity group-hover:opacity-100"
+            style={{ left: `calc(${progress}% - 6px)` }}
           />
         </div>
 
@@ -75,15 +132,18 @@ export function HeroPlayer() {
           <button
             type="button"
             aria-label={t.hero.like}
-            className="grid size-11 place-items-center rounded-full border border-border bg-secondary/60 text-primary transition-all duration-200 hover:scale-105 hover:border-primary/40 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            aria-pressed={isLiked}
+            onClick={toggleLike}
+            className={`grid size-11 place-items-center rounded-full border transition-all duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${isLiked ? "border-primary/50 bg-primary/15 text-primary" : "border-border bg-secondary/60 text-primary hover:border-primary/40 hover:bg-secondary"}`}
           >
-            <Heart className="size-5 fill-current" aria-hidden />
+            <Heart className={`size-5 ${isLiked ? "fill-current" : ""}`} aria-hidden />
           </button>
           <div className="flex items-center gap-2.5 sm:gap-3">
             <button
               type="button"
               aria-label={t.hero.previous}
-              disabled={!canPlay}
+              disabled={!canPlay || !canSkip}
+              onClick={playPrevious}
               className="grid size-11 place-items-center rounded-full border border-border bg-secondary/60 transition-all duration-200 hover:scale-105 hover:border-primary/40 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-40"
             >
               <SkipBack className="size-5" aria-hidden />
@@ -104,7 +164,8 @@ export function HeroPlayer() {
             <button
               type="button"
               aria-label={t.hero.next}
-              disabled={!canPlay}
+              disabled={!canPlay || !canSkip}
+              onClick={playNext}
               className="grid size-11 place-items-center rounded-full border border-border bg-secondary/60 transition-all duration-200 hover:scale-105 hover:border-primary/40 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-40"
             >
               <SkipForward className="size-5" aria-hidden />
@@ -113,7 +174,8 @@ export function HeroPlayer() {
           <button
             type="button"
             aria-label={t.hero.shuffle}
-            disabled={!canPlay}
+            disabled={!canPlay || !canSkip}
+            onClick={shuffle}
             className="grid size-11 place-items-center rounded-full border border-border bg-secondary/60 transition-all duration-200 hover:scale-105 hover:border-primary/40 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-40"
           >
             <Shuffle className="size-5" aria-hidden />

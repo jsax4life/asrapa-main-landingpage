@@ -11,10 +11,12 @@ import {
 import { useLocale } from "@/i18n/locale";
 import {
   artistDisplayName,
+  fetchLandingCatalog,
   fetchLandingSpotlight,
   formatDuration,
   trackCoverUrl,
   type LandingSpotlight,
+  type SpotlightTrack,
 } from "@/lib/landing-spotlight";
 import album1 from "@/assets/album-1.jpg";
 import album2 from "@/assets/album-2.jpg";
@@ -23,14 +25,19 @@ import album5 from "@/assets/album-5.jpg";
 import type { Messages } from "@/i18n/translations";
 
 const fallbackCovers = [album2, album5];
+const LIKED_STORAGE_KEY = "asrapa:liked-tracks";
 
-export type SpotlightPlayerView = {
+export type QueueTrack = {
+  id: string;
   trackTitle: string;
   artistLine: string;
   albumAlt: string;
   coverUrl: string;
   songUrl: string | null;
   duration: number;
+};
+
+export type SpotlightPlayerView = QueueTrack & {
   monthlyListens: number;
   featuredName: string;
   featuredPhoto: string;
@@ -44,21 +51,76 @@ type SpotlightPlayerContextValue = {
   currentTime: number;
   progress: number;
   canPlay: boolean;
+  canSkip: boolean;
+  isLiked: boolean;
   togglePlayback: () => Promise<void>;
+  playNext: () => void;
+  playPrevious: () => void;
+  shuffle: () => void;
+  seek: (time: number) => void;
+  toggleLike: () => void;
   formatDuration: typeof formatDuration;
 };
 
 const SpotlightPlayerContext = createContext<SpotlightPlayerContextValue | null>(null);
 
-function buildFallbackView(t: Messages): SpotlightPlayerView {
+function loadLikedIds(): Set<string> {
+  if (typeof window === "undefined") return new Set();
+  try {
+    const raw = window.localStorage.getItem(LIKED_STORAGE_KEY);
+    return raw ? new Set(JSON.parse(raw)) : new Set();
+  } catch {
+    return new Set();
+  }
+}
+
+function saveLikedIds(ids: Set<string>) {
+  try {
+    window.localStorage.setItem(LIKED_STORAGE_KEY, JSON.stringify(Array.from(ids)));
+  } catch {
+    // ignore storage errors (private browsing, quota, etc.)
+  }
+}
+
+function trackToQueueEntry(track: SpotlightTrack, knownArtists: Map<string, string>): QueueTrack {
+  const artistId = track.artist?.id ?? track.artist?.stageName ?? "";
+  const artistName = artistDisplayName(track.artist) || knownArtists.get(artistId) || track.genre.name;
+  const artistLine =
+    artistName && artistName !== track.genre.name
+      ? `${artistName} · ${track.genre.name}`
+      : track.genre.name;
+
+  return {
+    id: track.id,
+    trackTitle: track.title,
+    artistLine,
+    albumAlt: artistName ? `${track.title} — ${artistName}` : track.title,
+    coverUrl: trackCoverUrl(track) || album1,
+    songUrl: track.songUrl || null,
+    duration: track.duration || 0,
+  };
+}
+
+function buildFallbackQueue(t: Messages): QueueTrack[] {
+  const [first, second] = t.hero.player.playlists;
+  void first;
+  void second;
+  return [
+    {
+      id: "fallback",
+      trackTitle: t.hero.player.trackTitle,
+      artistLine: t.hero.player.trackArtist,
+      albumAlt: t.hero.player.albumAlt,
+      coverUrl: album1,
+      songUrl: null,
+      duration: 222,
+    },
+  ];
+}
+
+function buildFallbackMeta(t: Messages) {
   const [first, second] = t.hero.player.playlists;
   return {
-    trackTitle: t.hero.player.trackTitle,
-    artistLine: t.hero.player.trackArtist,
-    albumAlt: t.hero.player.albumAlt,
-    coverUrl: album1,
-    songUrl: null,
-    duration: 222,
     monthlyListens:
       Number(t.hero.player.monthlyStreamsCount.replace(/\s/g, "").replace(/,/g, "")) || 0,
     featuredName: t.hero.player.featuredArtist,
@@ -81,56 +143,77 @@ function buildFallbackView(t: Messages): SpotlightPlayerView {
   };
 }
 
-function buildView(data: LandingSpotlight): SpotlightPlayerView {
-  const { currentTrack, featuredArtist, relatedCollections } = data;
-  const artist = artistDisplayName(currentTrack.artist);
-
-  return {
-    trackTitle: currentTrack.title,
-    artistLine: `${artist} · ${currentTrack.genre.name}`,
-    albumAlt: `${currentTrack.title} — ${artist}`,
-    coverUrl: trackCoverUrl(currentTrack) || album1,
-    songUrl: currentTrack.songUrl || null,
-    duration: currentTrack.duration || 0,
-    monthlyListens: currentTrack.monthlyListens ?? currentTrack.streams ?? 0,
-    featuredName: artistDisplayName(featuredArtist),
-    featuredPhoto: featuredArtist.profilePicture || album3,
-    newFansThisMonth: featuredArtist.newFansThisMonth ?? 0,
-    collections: relatedCollections.slice(0, 2).map((item, i) => ({
-      id: item.id,
-      title: item.title,
-      coverUrl: item.coverPhotoUrl || fallbackCovers[i] || album2,
-      trackCount: item.trackCount,
-    })),
-  };
-}
+type SpotlightMeta = ReturnType<typeof buildFallbackMeta>;
 
 export function LandingSpotlightPlayerProvider({ children }: { children: ReactNode }) {
   const { locale, t } = useLocale();
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [view, setView] = useState<SpotlightPlayerView>(() => buildFallbackView(t));
+  const wasPlayingRef = useRef(false);
+
+  const [queue, setQueue] = useState<QueueTrack[]>(() => buildFallbackQueue(t));
+  const [meta, setMeta] = useState<SpotlightMeta>(() => buildFallbackMeta(t));
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
+  const [likedIds, setLikedIds] = useState<Set<string>>(() => loadLikedIds());
 
   useEffect(() => {
     let cancelled = false;
 
-    fetchLandingSpotlight()
-      .then((data) => {
-        if (!cancelled) {
-          setView(buildView(data));
-          setCurrentTime(0);
-          setIsPlaying(false);
-        }
-      })
-      .catch(() => {
-        if (!cancelled) setView(buildFallbackView(t));
-      });
+    async function load() {
+      try {
+        const data: LandingSpotlight = await fetchLandingSpotlight();
+        const artist = data.featuredArtist;
+        const knownArtists = new Map<string, string>([[artist.id, artistDisplayName(artist)]]);
 
+        const currentEntry = trackToQueueEntry(
+          { ...data.currentTrack, artist: data.currentTrack.artist ?? artist },
+          knownArtists,
+        );
+
+        let others: QueueTrack[] = [];
+        try {
+          const catalog = await fetchLandingCatalog();
+          others = catalog
+            .filter((track) => track.id !== currentEntry.id && track.songUrl)
+            .map((track) => trackToQueueEntry(track, knownArtists));
+        } catch {
+          others = [];
+        }
+
+        if (cancelled) return;
+        setQueue([currentEntry, ...others]);
+        setCurrentIndex(0);
+        setCurrentTime(0);
+        setIsPlaying(false);
+        setMeta({
+          monthlyListens: data.currentTrack.monthlyListens ?? data.currentTrack.streams ?? 0,
+          featuredName: artistDisplayName(artist),
+          featuredPhoto: artist.profilePicture || album3,
+          newFansThisMonth: artist.newFansThisMonth ?? 0,
+          collections: data.relatedCollections.slice(0, 2).map((item, i) => ({
+            id: item.id,
+            title: item.title,
+            coverUrl: item.coverPhotoUrl || fallbackCovers[i] || album2,
+            trackCount: item.trackCount,
+          })),
+        });
+      } catch {
+        if (!cancelled) {
+          setQueue(buildFallbackQueue(t));
+          setMeta(buildFallbackMeta(t));
+          setCurrentIndex(0);
+        }
+      }
+    }
+
+    load();
     return () => {
       cancelled = true;
     };
   }, [locale, t]);
+
+  const track = queue[currentIndex] ?? queue[0];
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -138,7 +221,7 @@ export function LandingSpotlightPlayerProvider({ children }: { children: ReactNo
 
     const onTimeUpdate = () => setCurrentTime(audio.currentTime);
     const onEnded = () => {
-      setIsPlaying(false);
+      setCurrentIndex((i) => (queue.length > 0 ? (i + 1) % queue.length : i));
       setCurrentTime(0);
     };
     const onPause = () => setIsPlaying(false);
@@ -155,23 +238,27 @@ export function LandingSpotlightPlayerProvider({ children }: { children: ReactNo
       audio.removeEventListener("pause", onPause);
       audio.removeEventListener("play", onPlay);
     };
-  }, [view.songUrl]);
+  }, [queue.length]);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+    const shouldResume = wasPlayingRef.current;
     audio.pause();
-    setIsPlaying(false);
     setCurrentTime(0);
     audio.load();
-  }, [view.songUrl]);
+    if (shouldResume && track?.songUrl) {
+      audio.play().catch(() => setIsPlaying(false));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [track?.songUrl]);
 
-  const duration = view.duration || 0;
+  const duration = track?.duration || 0;
   const progress = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
 
   const togglePlayback = useCallback(async () => {
     const audio = audioRef.current;
-    if (!audio || !view.songUrl) return;
+    if (!audio || !track?.songUrl) return;
 
     if (isPlaying) {
       audio.pause();
@@ -183,7 +270,58 @@ export function LandingSpotlightPlayerProvider({ children }: { children: ReactNo
     } catch {
       setIsPlaying(false);
     }
-  }, [isPlaying, view.songUrl]);
+  }, [isPlaying, track?.songUrl]);
+
+  const goToIndex = useCallback(
+    (index: number) => {
+      if (queue.length === 0) return;
+      wasPlayingRef.current = isPlaying;
+      setCurrentIndex(((index % queue.length) + queue.length) % queue.length);
+    },
+    [queue.length, isPlaying],
+  );
+
+  const playNext = useCallback(() => goToIndex(currentIndex + 1), [goToIndex, currentIndex]);
+  const playPrevious = useCallback(() => goToIndex(currentIndex - 1), [goToIndex, currentIndex]);
+
+  const shuffle = useCallback(() => {
+    if (queue.length < 2) return;
+    let next = currentIndex;
+    while (next === currentIndex) {
+      next = Math.floor(Math.random() * queue.length);
+    }
+    goToIndex(next);
+  }, [queue.length, currentIndex, goToIndex]);
+
+  const seek = useCallback(
+    (time: number) => {
+      const audio = audioRef.current;
+      if (!audio || !track?.songUrl) return;
+      const clamped = Math.max(0, Math.min(duration, time));
+      audio.currentTime = clamped;
+      setCurrentTime(clamped);
+    },
+    [duration, track?.songUrl],
+  );
+
+  const toggleLike = useCallback(() => {
+    if (!track) return;
+    setLikedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(track.id)) next.delete(track.id);
+      else next.add(track.id);
+      saveLikedIds(next);
+      return next;
+    });
+  }, [track]);
+
+  const view: SpotlightPlayerView = useMemo(
+    () => ({
+      ...(track ?? buildFallbackQueue(t)[0]),
+      ...meta,
+    }),
+    [track, meta, t],
+  );
 
   const value = useMemo(
     () => ({
@@ -191,17 +329,38 @@ export function LandingSpotlightPlayerProvider({ children }: { children: ReactNo
       isPlaying,
       currentTime,
       progress,
-      canPlay: Boolean(view.songUrl),
+      canPlay: Boolean(track?.songUrl),
+      canSkip: queue.length > 1,
+      isLiked: track ? likedIds.has(track.id) : false,
       togglePlayback,
+      playNext,
+      playPrevious,
+      shuffle,
+      seek,
+      toggleLike,
       formatDuration,
     }),
-    [view, isPlaying, currentTime, progress, togglePlayback],
+    [
+      view,
+      isPlaying,
+      currentTime,
+      progress,
+      track,
+      queue.length,
+      likedIds,
+      togglePlayback,
+      playNext,
+      playPrevious,
+      shuffle,
+      seek,
+      toggleLike,
+    ],
   );
 
   return (
     <SpotlightPlayerContext.Provider value={value}>
-      {view.songUrl ? (
-        <audio ref={audioRef} src={view.songUrl} preload="metadata" className="sr-only" />
+      {track?.songUrl ? (
+        <audio ref={audioRef} src={track.songUrl} preload="metadata" className="sr-only" />
       ) : null}
       {children}
     </SpotlightPlayerContext.Provider>
