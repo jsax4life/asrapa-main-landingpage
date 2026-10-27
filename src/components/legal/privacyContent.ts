@@ -139,7 +139,7 @@ export const privacyFr: PrivacyContent = {
       id: "enfants",
       title: "10. Enfants",
       paragraphs: [
-        "AsraPa ne s'adresse pas aux enfants de moins de [âge minimum à fixer] ans. Si vous pensez qu'un enfant nous a transmis des données, écrivez-nous et nous les supprimerons.",
+        "AsraPa ne s'adresse pas aux enfants de moins de 16 ans. Si vous pensez qu'un enfant nous a transmis des données, écrivez-nous et nous les supprimerons.",
       ],
     },
     {
@@ -265,7 +265,7 @@ export const privacyEn: PrivacyContent = {
       id: "children",
       title: "10. Children",
       paragraphs: [
-        "AsraPa is not intended for children under [minimum age to be set]. If you believe a child has given us personal data, write to us and we will delete it.",
+        "AsraPa is not intended for children under 16. If you believe a child has given us personal data, write to us and we will delete it.",
       ],
     },
     {
