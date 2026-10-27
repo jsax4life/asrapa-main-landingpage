@@ -432,7 +432,7 @@ export const translations = {
         {
           title: "Legal",
           links: [
-            { label: "Privacy Policy", href: "#contact" },
+            { label: "Privacy Policy", href: "/privacy" },
             { label: "Terms of Service", href: "https://artists.asrapa.com/terms" },
             { label: "Cookie Policy", href: "#contact" },
             { label: "Licensing", href: "#contact" },
@@ -875,7 +875,7 @@ export const translations = {
         {
           title: "Mentions légales",
           links: [
-            { label: "Politique de confidentialité", href: "#contact" },
+            { label: "Politique de confidentialité", href: "/confidentialite" },
             { label: "Conditions d'utilisation", href: "#contact" },
             { label: "Politique cookies", href: "#contact" },
             { label: "Licences", href: "#contact" },
