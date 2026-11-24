@@ -347,7 +347,7 @@ export const translations = {
         },
         {
           q: "How do I become a reseller?",
-          a: "Whether you're a market vendor, a partner, or a mobile banking agent, you can join the AsraPa network. The Bunda package earns market vendors 50 FCFA per sale.",
+          a: "Whether you're a market vendor, a partner, or a reseller outside N'Djamena, you can join the AsraPa network. Market resellers earn a 15 to 20% commission. Contact us to discover our different reseller packages.",
         },
         {
           q: "Does it work without a smartphone?",
@@ -790,7 +790,7 @@ export const translations = {
         },
         {
           q: "Comment devenir revendeur ?",
-          a: "Que vous soyez vendeur de marché, partenaire ou agent de mobile banking, vous pouvez rejoindre le réseau AsraPa. Le forfait Bunda rapporte 50 FCFA par vente aux revendeurs de marché.",
+          a: "Que vous soyez vendeur de marché, partenaire ou revendeur hors N'Djamena, vous pouvez rejoindre le réseau AsraPa. Les revendeurs de marché touchent 15 à 20 % de commission. Contactez-nous pour découvrir nos différents packages revendeurs.",
         },
         {
           q: "Est-ce que ça marche sans smartphone ?",
