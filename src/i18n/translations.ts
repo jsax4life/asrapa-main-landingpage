@@ -98,31 +98,21 @@ export const translations = {
           plans: [
             {
               name: "Premium",
-              price: "2,500 FCFA / month",
+              price: "3,000 FCFA / month",
               detail: "Unlimited streaming, downloads, offline listening, high quality.",
             },
-            { name: "Family", price: "4,000 FCFA / month", detail: "5 connectable people." },
+            { name: "Family", price: "5,000 FCFA / month", detail: "5 connectable people." },
             {
-              name: "Student",
-              price: "1,200 FCFA / month",
-              detail: "1 single account, downloads limited to 20 tracks/month.",
+              name: "Youth (under 26)",
+              price: "1,500 FCFA / month",
+              detail: "1 single account, up to 50 downloadable, swappable tracks.",
             },
           ],
         },
         {
-          title: "Small phone (KaiOS)",
-          price: "1,000 FCFA / month",
-          body: "Access AsraPa from a KaiOS-compatible keypad phone.",
-        },
-        {
-          title: "Classic phone (USSD)",
-          price: "500 FCFA / month",
-          body: "Listen without internet or a smartphone, via a USSD code.",
-        },
-        {
-          title: "Bunda Package",
-          price: "150 FCFA / 6 tracks",
-          body: "Sold individually through the reseller network.",
+          title: "Packs",
+          price: "6 tracks for 150 FCFA, 20 tracks for 500 FCFA",
+          body: "Load them onto your SD card at an AsraPa reseller.",
         },
       ],
     },
@@ -150,14 +140,14 @@ export const translations = {
     network: {
       eyebrow: "Join the network",
       title: "Sell Chadian music, without changing your habits.",
-      body: "Whether you're already a market reseller, a partner or a mobile banking agent, AsraPa fits into what you're already doing — without disrupting anything.",
+      body: "Whether you're already a market reseller, a partner or a reseller outside N'Djamena, AsraPa fits into what you're already doing — without disrupting anything.",
       channelsAria: "Reseller partner channels",
       become: "Become a reseller / distributor",
       howNetwork: "How does the network work?",
       channels: [
         {
           title: "Market reseller",
-          rate: "15 to 20% commission",
+          rate: "200 to 500 FCFA per subscription sold",
           body: "With earnings higher than those of other players on the market (telecoms, TV subscriptions…).",
           confirmed: true,
         },
@@ -316,6 +306,56 @@ export const translations = {
       getStarted: "Get Started",
       joinArtist: "Join as Artist",
     },
+    tiers: {
+      eyebrow: "Become a reseller",
+      title: "Three levels to sell AsraPa.",
+      description: "Choose the level that suits your business. Each one opens a WhatsApp conversation with the AsraPa team.",
+      sells: "What you sell",
+      conditions: "Conditions",
+      whatsappPending: "WhatsApp number coming soon",
+      levels: [
+        {
+          name: "Asra Point",
+          sells: "Subscriptions and packs.",
+          conditions: [
+            "Electronic top-up of internal credit: 20,000 FCFA minimum.",
+            "Entry fee: 10,000 FCFA, non-refundable.",
+          ],
+          cta: "Become an Asra Point",
+          message: "Hello, I would like to become an Asra Point.",
+        },
+        {
+          name: "AsraPa Shop",
+          sells: "Everything in Asra Point, plus a space for music accessories (earphones, AsraPa headphones, etc.).",
+          conditions: [
+            "Entry fee: 50,000 FCFA, non-refundable.",
+            "Minimum order: 97,800 FCFA of products, plus 15,000 FCFA of internal credit.",
+          ],
+          cta: "Become an AsraPa Shop",
+          message: "Hello, I would like to become an AsraPa Shop.",
+        },
+        {
+          name: "AsraPa Shop +",
+          sells: "Everything in AsraPa Shop, plus AsraPa phones.",
+          conditions: [
+            "Entry fee: 100,000 FCFA, non-refundable.",
+            "Minimum order: 193,400 FCFA of products, plus 15,000 FCFA of internal credit.",
+          ],
+          cta: "Become an AsraPa Shop +",
+          message: "Hello, I would like to become an AsraPa Shop +.",
+        },
+      ],
+    },
+    preorder: {
+      eyebrow: "Free pre-order",
+      title: "Be the first to know when we launch.",
+      body: "Free, no commitment. Choose how you'd like to be notified.",
+      whatsapp: "Notify me on WhatsApp",
+      whatsappMessage: "Hello AsraPa, let me know as soon as the app is available. My first name: ",
+      whatsappPending: "WhatsApp number coming soon",
+      email: "Notify me by email",
+      consent: "By writing to us, you agree to be contacted about the AsraPa launch.",
+    },
     faq: {
       eyebrow: "FAQ",
       title: "Your questions, our answers",
@@ -347,11 +387,11 @@ export const translations = {
         },
         {
           q: "How do I become a reseller?",
-          a: "Whether you're a market vendor, a partner, or a reseller outside N'Djamena, you can join the AsraPa network. Market resellers earn a 15 to 20% commission. Contact us to discover our different reseller packages.",
+          a: "Whether you're a market vendor, a partner, or a reseller outside N'Djamena, you can join the AsraPa network. Commission per sale: 200 FCFA for a Youth subscription, 300 FCFA for Premium, 500 FCFA for Family, 30 FCFA for a 6-track pack and 100 FCFA for a 20-track pack. Contact us to discover our different reseller packages.",
         },
         {
           q: "Does it work without a smartphone?",
-          a: "Yes. AsraPa is accessible on small KaiOS phones (1,000 FCFA/month) and on classic phones via USSD (500 FCFA/month).",
+          a: "Yes, with Packs: 6 tracks for 150 FCFA or 20 tracks for 500 FCFA, loaded onto your phone's SD card at an AsraPa reseller.",
         },
         {
           q: "How are artists paid?",
@@ -383,13 +423,13 @@ export const translations = {
       emailLabel: "Email",
       phoneLabel: "Phone",
       email: "infos@asrapa.com",
-      phones: ["00 235 87 50 91 91", "00 235 30 14 34 34"],
+      phones: ["00 235 87 50 91 91", "00 235 30 14 34 34"],
     },
     stores: {
-      appAria: "Download AsraPa on the App Store",
-      appOn: "Download on the",
-      playAria: "Get AsraPa on Google Play",
-      playOn: "Get it on",
+      appAria: "AsraPa coming soon on the App Store: pre-order",
+      appOn: "Coming soon on",
+      playAria: "AsraPa coming soon on Google Play: pre-order",
+      playOn: "Coming soon on",
     },
     footer: {
       blurb:
@@ -412,9 +452,9 @@ export const translations = {
           links: [
             { label: "About AsraPa", href: "#home" },
             { label: "For Artists", href: "artists", external: true },
-            { label: "Join the network", href: "agents", external: true },
+            { label: "Join the network", href: "#revendeurs" },
             { label: "Careers", href: "#contact" },
-            { label: "Download App", href: "playStore", external: true },
+            { label: "Pre-order the app", href: "#precommande" },
           ],
         },
         {
@@ -499,7 +539,7 @@ export const translations = {
           { title: "Musique traditionnelle", count: 18 },
         ],
         featuredArtist: "Mounira Mitchala",
-        monthlyStreamsCount: "12 480",
+        monthlyStreamsCount: "12 480",
       },
     },
     manifesto: {
@@ -536,35 +576,25 @@ export const translations = {
       channels: [
         {
           title: "Smartphone",
-          body: "Écoute premium sur appareils modernes : streaming, téléchargements et lecture hors ligne.",
+          body: "Écoute premium sur appareils modernes : streaming, téléchargements et lecture hors ligne.",
           plans: [
             {
               name: "Premium",
-              price: "2 500 FCFA / mois",
+              price: "3 000 FCFA / mois",
               detail: "Streaming illimité, téléchargement, écoute hors ligne, haute qualité.",
             },
-            { name: "Famille", price: "4 000 FCFA / mois", detail: "5 personnes connectables." },
+            { name: "Famille", price: "5 000 FCFA / mois", detail: "5 personnes connectables." },
             {
-              name: "Étudiant",
-              price: "1 200 FCFA / mois",
-              detail: "1 seul compte, téléchargement limité à 20 titres/mois.",
+              name: "Jeunes (moins de 26 ans)",
+              price: "1 500 FCFA / mois",
+              detail: "1 seul compte, jusqu'à 50 titres téléchargeables et interchangeables.",
             },
           ],
         },
         {
-          title: "Petit téléphone (KaiOS)",
-          price: "1 000 FCFA / mois",
-          body: "Accès à AsraPa depuis un téléphone à clavier compatible KaiOS.",
-        },
-        {
-          title: "Téléphone classique (USSD)",
-          price: "500 FCFA / mois",
-          body: "Écoutez sans internet ni smartphone, via un code USSD.",
-        },
-        {
-          title: "Forfait Bunda",
-          price: "150 FCFA / 6 titres",
-          body: "Vendu à l'unité via le réseau de revendeurs.",
+          title: "Packs",
+          price: "6 titres à 150 FCFA, 20 titres à 500 FCFA",
+          body: "Rechargez votre carte SD chez un revendeur AsraPa.",
         },
       ],
     },
@@ -592,14 +622,14 @@ export const translations = {
     network: {
       eyebrow: "Rejoindre le réseau",
       title: "Vendez la musique tchadienne, sans changer vos habitudes.",
-      body: "Que vous soyez déjà revendeur de marché, partenaire ou agent de mobile banking, AsraPa s'intègre à ce que vous faites déjà, sans rien bouleverser.",
+      body: "Que vous soyez déjà revendeur de marché, partenaire ou revendeur hors N'Djaména, AsraPa s'intègre à ce que vous faites déjà, sans rien bouleverser.",
       channelsAria: "Canaux partenaires revendeurs",
       become: "Devenir revendeur / distributeur",
       howNetwork: "Comment fonctionne le réseau ?",
       channels: [
         {
           title: "Revendeur de marché",
-          rate: "15 à 20 % de commission",
+          rate: "200 à 500 FCFA par abonnement vendu",
           body: "Avec une rémunération dépassant celles des autres acteurs du marché (télécoms, abonnements TV…).",
           confirmed: true,
         },
@@ -610,7 +640,7 @@ export const translations = {
           confirmed: true,
         },
         {
-          title: "Revendeur hors N'Djamena",
+          title: "Revendeur hors N'Djaména",
           rate: "Package avantageux",
           body: "Contactez-nous pour découvrir nos différents packages revendeurs.",
           confirmed: true,
@@ -713,7 +743,7 @@ export const translations = {
       playlistDuration: "1 h 42 min",
       artistName: "Rocky La Citadelle",
       artistLocation: "Tchad",
-      followerCount: "9 412",
+      followerCount: "9 412",
       tracks: [
         {
           title: "N'Djamena",
@@ -759,6 +789,56 @@ export const translations = {
       getStarted: "Commencer",
       joinArtist: "Rejoindre en artiste",
     },
+    tiers: {
+      eyebrow: "Devenir revendeur",
+      title: "Trois paliers pour vendre AsraPa.",
+      description: "Choisissez le palier adapté à votre activité. Chaque bouton ouvre une discussion WhatsApp avec l'équipe AsraPa.",
+      sells: "Ce que vous vendez",
+      conditions: "Conditions",
+      whatsappPending: "Numéro WhatsApp à venir",
+      levels: [
+        {
+          name: "Asra Point",
+          sells: "Forfaits et packs.",
+          conditions: [
+            "Recharge électronique du crédit interne : 20 000 FCFA minimum.",
+            "Ticket d'entrée : 10 000 FCFA, non remboursable.",
+          ],
+          cta: "Devenir Asra Point",
+          message: "Bonjour, je souhaite devenir Asra Point.",
+        },
+        {
+          name: "AsraPa Shop",
+          sells: "Tout Asra Point, plus un espace dédié aux accessoires de musique (écouteurs, casques AsraPa, etc.).",
+          conditions: [
+            "Ticket d'entrée : 50 000 FCFA, non remboursable.",
+            "Commande minimale : 97 800 FCFA de produits, plus 15 000 FCFA de crédit interne.",
+          ],
+          cta: "Devenir AsraPa Shop",
+          message: "Bonjour, je souhaite devenir AsraPa Shop.",
+        },
+        {
+          name: "AsraPa Shop +",
+          sells: "Tout AsraPa Shop, plus les téléphones AsraPa.",
+          conditions: [
+            "Ticket d'entrée : 100 000 FCFA, non remboursable.",
+            "Commande minimale : 193 400 FCFA de produits, plus 15 000 FCFA de crédit interne.",
+          ],
+          cta: "Devenir AsraPa Shop +",
+          message: "Bonjour, je souhaite devenir AsraPa Shop +.",
+        },
+      ],
+    },
+    preorder: {
+      eyebrow: "Précommande gratuite",
+      title: "Soyez prévenu dès le lancement.",
+      body: "Gratuit, sans engagement. Choisissez comment être prévenu.",
+      whatsapp: "Me prévenir sur WhatsApp",
+      whatsappMessage: "Bonjour AsraPa, prévenez-moi dès que l'application est disponible. Mon prénom : ",
+      whatsappPending: "Numéro WhatsApp à venir",
+      email: "Me prévenir par e-mail",
+      consent: "En nous écrivant, vous acceptez d'être contacté au sujet du lancement d'AsraPa.",
+    },
     faq: {
       eyebrow: "FAQ",
       title: "Vos questions, nos réponses",
@@ -790,11 +870,11 @@ export const translations = {
         },
         {
           q: "Comment devenir revendeur ?",
-          a: "Que vous soyez vendeur de marché, partenaire ou revendeur hors N'Djamena, vous pouvez rejoindre le réseau AsraPa. Les revendeurs de marché touchent 15 à 20 % de commission. Contactez-nous pour découvrir nos différents packages revendeurs.",
+          a: "Que vous soyez vendeur de marché, partenaire ou revendeur hors N'Djaména, vous pouvez rejoindre le réseau AsraPa. Commission par vente : 200 FCFA pour un abonnement Jeunes, 300 FCFA pour un Premium, 500 FCFA pour un Famille, 30 FCFA pour un pack de 6 titres et 100 FCFA pour un pack de 20 titres. Contactez-nous pour découvrir nos différents packages revendeurs.",
         },
         {
           q: "Est-ce que ça marche sans smartphone ?",
-          a: "Oui. AsraPa est accessible sur les petits téléphones KaiOS (1 000 FCFA/mois) et sur les téléphones classiques via USSD (500 FCFA/mois).",
+          a: "Oui, avec les Packs : 6 titres à 150 FCFA ou 20 titres à 500 FCFA, à charger sur la carte SD de votre téléphone chez un revendeur AsraPa.",
         },
         {
           q: "Comment les artistes sont-ils payés ?",
@@ -826,13 +906,13 @@ export const translations = {
       emailLabel: "E-mail",
       phoneLabel: "Téléphone",
       email: "infos@asrapa.com",
-      phones: ["00 235 87 50 91 91", "00 235 30 14 34 34"],
+      phones: ["00 235 87 50 91 91", "00 235 30 14 34 34"],
     },
     stores: {
-      appAria: "Télécharger AsraPa sur l'App Store",
-      appOn: "Télécharger sur",
-      playAria: "Obtenir AsraPa sur Google Play",
-      playOn: "Disponible sur",
+      appAria: "AsraPa bientôt sur l'App Store : précommander",
+      appOn: "Bientôt sur",
+      playAria: "AsraPa bientôt sur Google Play : précommander",
+      playOn: "Bientôt sur",
     },
     footer: {
       blurb:
@@ -855,9 +935,9 @@ export const translations = {
           links: [
             { label: "À propos d'AsraPa", href: "#home" },
             { label: "Pour les artistes", href: "artists", external: true },
-            { label: "Rejoindre le réseau", href: "agents", external: true },
+            { label: "Rejoindre le réseau", href: "#revendeurs" },
             { label: "Carrières", href: "#contact" },
-            { label: "Télécharger l'appli", href: "playStore", external: true },
+            { label: "Précommander l'appli", href: "#precommande" },
           ],
         },
         {

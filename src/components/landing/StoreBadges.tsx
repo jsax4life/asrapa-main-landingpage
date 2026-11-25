@@ -1,4 +1,3 @@
-import { LINKS } from "./links";
 import { cn } from "@/lib/utils";
 import { useLocale } from "@/i18n/locale";
 
@@ -24,9 +23,7 @@ export function StoreBadges({ className }: { className?: string }) {
   return (
     <div className={cn("flex flex-wrap items-center gap-3", className)}>
       <a
-        href={LINKS.appStore}
-        target="_blank"
-        rel="noopener noreferrer"
+        href="#precommande"
         aria-label={t.stores.appAria}
         className="inline-flex items-center gap-2.5 rounded-xl border border-border bg-black px-3.5 py-2.5 text-left transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
@@ -37,9 +34,7 @@ export function StoreBadges({ className }: { className?: string }) {
         </span>
       </a>
       <a
-        href={LINKS.playStore}
-        target="_blank"
-        rel="noopener noreferrer"
+        href="#precommande"
         aria-label={t.stores.playAria}
         className="inline-flex items-center gap-2.5 rounded-xl border border-border bg-black px-3.5 py-2.5 text-left transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >

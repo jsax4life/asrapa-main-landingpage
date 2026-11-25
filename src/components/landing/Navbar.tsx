@@ -3,7 +3,6 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { getAppDownloadUrl, LINKS, type AppDownloadUrl } from "./links";
 import { cn } from "@/lib/utils";
 import { useLocale } from "@/i18n/locale";
 
@@ -11,7 +10,6 @@ export function Navbar() {
   const { t } = useLocale();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [listenUrl, setListenUrl] = useState<AppDownloadUrl>(LINKS.playStore);
 
   const links = [
     { label: t.nav.home, href: "#home" },
@@ -23,10 +21,6 @@ export function Navbar() {
     { label: t.nav.faq, href: "#faq" },
     { label: t.nav.contact, href: "#contact" },
   ];
-
-  useEffect(() => {
-    setListenUrl(getAppDownloadUrl());
-  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -88,7 +82,7 @@ export function Navbar() {
           <div className="ml-3 flex items-center gap-2">
             <LanguageSwitcher />
             <Button asChild className="rounded-full">
-              <a href={listenUrl} target="_blank" rel="noopener noreferrer">
+              <a href="#precommande">
                 {t.nav.getStarted}
               </a>
             </Button>
@@ -127,12 +121,12 @@ export function Navbar() {
           </ul>
           <div className="grid gap-2.5">
             <Button asChild variant="outline" className="h-11 rounded-full">
-              <a href={listenUrl} target="_blank" rel="noopener noreferrer">
+              <a href="#precommande">
                 {t.nav.login}
               </a>
             </Button>
             <Button asChild className="h-11 rounded-full">
-              <a href={listenUrl} target="_blank" rel="noopener noreferrer">
+              <a href="#precommande">
                 {t.nav.getStarted}
               </a>
             </Button>

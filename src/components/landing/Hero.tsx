@@ -3,19 +3,14 @@ import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { StoreBadges } from "./StoreBadges";
 import { HeroPlayer } from "./HeroPlayer";
-import { getAppDownloadUrl, LINKS, type AppDownloadUrl } from "./links";
+import { LINKS } from "./links";
 import heroBg from "@/assets/hero-bg.jpg";
 import { useLocale } from "@/i18n/locale";
 
 export function Hero() {
   const { t } = useLocale();
-  const [listenUrl, setListenUrl] = useState<AppDownloadUrl>(LINKS.playStore);
   const [badgeReplayKey, setBadgeReplayKey] = useState(0);
   const [titleReplayKey, setTitleReplayKey] = useState(0);
-
-  useEffect(() => {
-    setListenUrl(getAppDownloadUrl());
-  }, []);
 
   // Badge replays every 15s, starting immediately.
   useEffect(() => {
@@ -109,7 +104,7 @@ export function Hero() {
 
           <div className="animate-fade-up mt-9 flex flex-wrap gap-3 [animation-delay:600ms]">
             <Button asChild size="lg" className="rounded-full px-7">
-              <a href={listenUrl} target="_blank" rel="noopener noreferrer">
+              <a href="#precommande">
                 <Play className="size-4 fill-current" aria-hidden />
                 {t.hero.preorder}
               </a>
