@@ -6,6 +6,8 @@ export const LINKS = {
   appStore: "https://apps.apple.com/app/asrapa-music",
   /** Update when the Play Store package name is finalized. */
   playStore: "https://play.google.com/store/apps/details?id=com.asrapa.music",
+  /** ASRAPA BUSINESS WhatsApp number, international format without "+" or spaces (e.g. 2356…). */
+  whatsappBusiness: "23587509191",
   facebook: "https://www.facebook.com/profile.php?id=61593168059708&ref=1",
   instagram: "https://www.instagram.com/asrapa_chad?igsi=MTEycHR4c3RpanF0cw==",
 } as const;
@@ -21,4 +23,11 @@ export function getAppDownloadUrl(
   if (/android/.test(ua)) return LINKS.playStore;
   if (/mac os x|macintosh/.test(ua)) return LINKS.appStore;
   return LINKS.playStore;
+}
+
+/** WhatsApp link with a prefilled message, or null while the number is not provided. */
+export function whatsappLink(message: string): string | null {
+  const number: string = LINKS.whatsappBusiness;
+  if (!number) return null;
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }

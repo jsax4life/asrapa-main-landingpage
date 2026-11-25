@@ -2,7 +2,6 @@ import { Music2, Radio, Smartphone } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
-import { LINKS } from "./links";
 import { useLocale } from "@/i18n/locale";
 
 const channelIcons: LucideIcon[] = [Music2, Radio, Smartphone];
@@ -72,7 +71,7 @@ export function AgentSection() {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg" className="rounded-full px-7">
-              <a href={LINKS.agents} target="_blank" rel="noopener noreferrer">
+              <a href="#revendeurs">
                 {t.network.become}
               </a>
             </Button>

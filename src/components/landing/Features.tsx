@@ -1,11 +1,11 @@
-import { Music2, Phone, Smartphone, TabletSmartphone } from "lucide-react";
+import { MemoryStick, Smartphone } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { useLocale } from "@/i18n/locale";
 
-const channelIcons: LucideIcon[] = [Smartphone, TabletSmartphone, Phone, Music2];
+const channelIcons: LucideIcon[] = [Smartphone, MemoryStick];
 
 export function Features() {
   const { t } = useLocale();
@@ -21,7 +21,7 @@ export function Features() {
 
         <ul
           id="rates"
-          className="mt-12 grid scroll-mt-28 gap-3 sm:mt-14 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4"
+          className="mx-auto mt-12 grid max-w-4xl scroll-mt-28 gap-3 sm:mt-14 sm:grid-cols-2 sm:gap-4"
         >
           {t.access.channels.map((channel, i) => {
             const Icon = channelIcons[i] ?? Smartphone;

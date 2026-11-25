@@ -1,18 +1,12 @@
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
 import { StoreBadges } from "./StoreBadges";
 import { BrandIcon } from "./Logo";
-import { getAppDownloadUrl, LINKS, type AppDownloadUrl } from "./links";
+import { LINKS } from "./links";
 import { useLocale } from "@/i18n/locale";
 
 export function CTASection() {
   const { t } = useLocale();
-  const [listenUrl, setListenUrl] = useState<AppDownloadUrl>(LINKS.playStore);
-
-  useEffect(() => {
-    setListenUrl(getAppDownloadUrl());
-  }, []);
 
   return (
     <section className="container-pad section-shell">
@@ -41,7 +35,7 @@ export function CTASection() {
                 variant="secondary"
                 className="rounded-full bg-black px-8 text-brand-gray hover:bg-black/90"
               >
-                <a href={listenUrl} target="_blank" rel="noopener noreferrer">
+                <a href="#precommande">
                   {t.cta.getStarted}
                 </a>
               </Button>

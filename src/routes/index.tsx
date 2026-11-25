@@ -2,12 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
+import { Preorder } from "@/components/landing/Preorder";
 import { Manifesto } from "@/components/landing/Manifesto";
 import { SocialProof } from "@/components/landing/SocialProof";
 import { Stats } from "@/components/landing/Stats";
 import { Features } from "@/components/landing/Features";
 import { ArtistSection } from "@/components/landing/ArtistSection";
 import { AgentSection } from "@/components/landing/AgentSection";
+import { ResellerTiers } from "@/components/landing/ResellerTiers";
 import { Discover } from "@/components/landing/Discover";
 import { WhyChoose } from "@/components/landing/WhyChoose";
 import { Testimonials } from "@/components/landing/Testimonials";
@@ -75,12 +77,14 @@ function Index() {
         <Navbar />
         <main id="main">
           <Hero />
+          <Preorder />
           <Manifesto />
           <SocialProof />
           <Stats />
           <Features />
           <ArtistSection />
           <AgentSection />
+          <ResellerTiers />
           <Discover />
           <WhyChoose />
           <Testimonials />
